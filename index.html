@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>MokeSell</title>
 
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-    </head>
-    <body>
-        <main></main>
-        <script src="bootstrap/js/bootstrap.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MokeSell</title>
+
+    <!-- Smooch Sans Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header>
+        <!-- Main navigation bar -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="nav-brand" href="index.html">Moke<span>S</span>ell</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <form class="d-flex w-100 ml-2 justify-content-center" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class=" btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <div class="navbar-nav">
+                        <a class="nav-link ms-sm-auto" href="#">Cart</a>
+                        <a class="nav-link" href="#">Wishlist</a>
+                        <a class="nav-link" href="#">Notifications</a>
+                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="#">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main></main>
+    <!-- Bootstrap js -->
+    <script src="bootstrap/js/bootstrap.js"></script>
+</body>
+
 </html>

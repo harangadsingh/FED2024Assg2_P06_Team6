@@ -1,0 +1,18 @@
+body {
+    font-family: "Smooch Sans", sans-serif;
+}
+
+span {
+    color: purple;
+}
+
+.navbar img {
+    width: 2em;
+    height: 2em;
+}
+
+.nav-brand {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+}
