@@ -6,6 +6,11 @@ span {
     color: purple;
 }
 
+#searchbar img {
+    width: 1rem;
+    height: 1rem;
+}
+
 .navbar img {
     width: 2rem;
     height: 2rem;
