@@ -30,9 +30,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        <form action="" class="d-flex" role="search">
+                            <label for="inline-searchbar" class="visually-hidden"></label>
+                            <div class="input-group">
+                                <div class="input-group-text"><img id="inline-icon"
+                                        src="images/icons/bootstrap/search.svg" alt=""></div>
+                                <input type="search" class="form-control" id="inline-searchbar"
+                                    placeholder="Used Iphone 16">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </div>
                         </form>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
