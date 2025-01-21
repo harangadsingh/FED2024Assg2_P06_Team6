@@ -15,4 +15,22 @@ span {
     text-decoration: none;
     color: black;
     font-size: 2rem;
+    font-weight: 200;
+}
+
+.checkout {
+    margin: 0;
+    border: none;
+    height: 100%;
+    font-size: 1.25rem;
+}
+
+#checkout-button {
+    background-color: greenyellow;
+    width: 100%;
+}
+
+.no-m-p {
+    margin: 0;
+    padding: 0;
 }
