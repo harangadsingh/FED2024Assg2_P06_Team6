@@ -2,23 +2,9 @@ body {
     font-family: "Smooch Sans", sans-serif;
 }
 
-span {
-    color: purple;
-}
-
-#inline-icon {
-    width: 1rem;
-    height: 1rem;
-}
-#inline-searchbar {
-    width: 750px;
-}
-
-.navbar img {
-    width: 2rem;
-    height: 2rem;
-}
-
+/* //////////////////
+MAIN NAVIGATION BAR
+////////////////// */
 .navbar-brand {
     text-decoration: none;
     color: black;
@@ -26,6 +12,35 @@ span {
     font-weight: 200;
 }
 
+.navbar-brand span {
+    color: purple;
+}
+
+.inline-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.navbar-img {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* The icon looks too tall when beside the other icons */
+#navbar-heart-icon-offset {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+/* //////////////////
+////////////////// */
+
+main {
+    background-color: grey;
+}
+
+/* //////////////////
+DESKTOP CHECKOUT FOOTER
+////////////////// */
 .checkout {
     margin: 0;
     border: none;
@@ -37,12 +52,5 @@ span {
     background-color: greenyellow;
     width: 100%;
 }
-
-.no-m-p {
-    margin: 0;
-    padding: 0;
-}
-
-main {
-    background-color: grey;
-}
+/* //////////////////
+////////////////// */
