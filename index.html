@@ -23,61 +23,73 @@
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Moke<span><b>S</b></span>ell</a>
-                <!-- Burger button on small devices -->
+                <!-- Logo -->
+                <a class="navbar-brand" href="#">Moke<span><b>S</b></span>ell</a>
+                <!-- Burger button on collapse -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- Collapse into burger on small devices -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!-- Searchbar with inline elements -->
-                        <form action="" class="d-flex" role="search">
-                            <label for="inline-searchbar" class="visually-hidden"></label>
-                            <div class="input-group">
-                                <div class="input-group-text"><img id="inline-icon"
-                                        src="images/icons/bootstrap/search.svg" alt=""></div>
-                                <input type="search" class="form-control" id="inline-searchbar"
-                                    placeholder="Used Iphone 16">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </div>
-                        </form>
-                        <!-- Search category dropdown -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Category
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <!-- Link to cart -->
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <form class="d-flex w-100" role="search">
+                        <div class="input-group">
+                            <!-- Inline search icon -->
+                            <span class="input-group-text"><img id="inline-icon" class="inline-icon"
+                                    src=" images/icons/bootstrap/search.svg" alt=""></span>
+                            <!-- Searchbar -->
+                            <input class="form-control m-0 border-start-0" type="search" placeholder="Used Macbook Pro"
+                                aria-label="Search">
+                            <!-- Select Category dropdown -->
+                            <span class="input-group-text p-0">
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Category
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <h6 class="dropdown-header fs-5">Electronics</h6>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Mobile Phones</a></li>
+                                        <li><a class="dropdown-item" href="#">Notebooks</a></li>
+                                        <li><a class="dropdown-item" href="#">Desktops</a></li>
+                                        <li><a class="dropdown-item" href="#">Game Consoles</a></li>
+                                        <li>
+                                            <h6 class="dropdown-header fs-5">Apparel</h6>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Tops</a></li>
+                                        <li><a class="dropdown-item" href="#">Bottoms</a></li>
+                                        <li><a class="dropdown-item" href="#">Shoes</a></li>
+                                        <li><a class="dropdown-item" href="#">Accessories</a></li>
+                                    </ul>
+                                </div>
+                            </span>
+                            <!-- Submit button -->
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </div>
+                    </form>
+                    <ul class="navbar-nav ms-2">
+                        <!-- Wishlist -->
                         <li class="nav-item">
-                            <a class="nav-link active pt-1" aria-current="page" href="#"><img
-                                    src="images/icons/bootstrap/cart2.svg" alt=""></a>
+                            <a class="nav-link" href="#wishlist" id="navbar-heart-icon-offset"><img class="navbar-img"
+                                    src="images/icons/bootstrap/heart-fill.svg" alt=""></a>
                         </li>
-                        <!-- Link to wishlist -->
+                        <!-- Notifications -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="images/icons/bootstrap/heart-fill.svg" alt=""></a>
+                            <a class="nav-link" href="#notif"><img class="navbar-img"
+                                    src="images/icons/bootstrap/bell.svg" alt=""></a>
                         </li>
-                        <!-- Link to account -->
+                        <!-- Account -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="images/icons/bootstrap/person-circle.svg" alt=""></a>
+                            <a class="nav-link" href="#account"><img class="navbar-img"
+                                    src="images/icons/bootstrap/person-circle.svg" alt=""></a>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </nav>
-
     </header>
     <main>
         <p class="fs-1 mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur dolor,
