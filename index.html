@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MokeSell</title>
@@ -9,117 +8,158 @@
     <!-- Smooch Sans Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Main navigation bar -->
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-sm bg-body-tertiary">
-            <div class="container-fluid">
-                <!-- Logo -->
-                <a class="navbar-brand" href="#">Moke<span><b>S</b></span>ell</a>
-                <!-- Burger button on collapse -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+      <nav class="navbar navbar-expand-sm bg-body-tertiary">
+        <div class="container-fluid">
+          <!-- Logo -->
+          <a class="navbar-brand" href="#"
+            >Moke<span><b>S</b></span
+            >ell</a
+          >
+          <!-- Burger button on collapse -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarToggler"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collapse into burger on small devices -->
+          <div class="collapse navbar-collapse" id="navbarToggler">
+            <form class="d-flex w-100" role="search">
+              <div class="input-group">
+                <!-- Inline search icon -->
+                <span class="input-group-text"
+                  ><img
+                    id="inline-icon"
+                    class="inline-icon"
+                    src=" images/icons/bootstrap/search.svg"
+                    alt=""
+                /></span>
+                <!-- Searchbar -->
+                <input
+                  class="form-control m-0 border-start-0"
+                  type="search"
+                  placeholder="Used Macbook Pro"
+                  aria-label="Search"
+                />
+                <!-- Select Category dropdown -->
+                <span class="input-group-text p-0 dropdown">
+                  <select
+                    class="form-select border-0"
+                    aria-label="Default select example"
+                  >
+                    <option selected>Category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="apparel">Apparel</option>
+                  </select>
+                </span>
+                <!-- Submit button -->
+                <button class="btn btn-outline-success" type="submit">
+                  Search
                 </button>
-                <!-- Collapse into burger on small devices -->
-                <div class="collapse navbar-collapse" id="navbarToggler">
-                    <form class="d-flex w-100" role="search">
-                        <div class="input-group">
-                            <!-- Inline search icon -->
-                            <span class="input-group-text"><img id="inline-icon" class="inline-icon"
-                                    src=" images/icons/bootstrap/search.svg" alt=""></span>
-                            <!-- Searchbar -->
-                            <input class="form-control m-0 border-start-0" type="search" placeholder="Used Macbook Pro"
-                                aria-label="Search">
-                            <!-- Select Category dropdown -->
-                            <span class="input-group-text p-0 dropdown">
-                                    <select class="form-select border-0" aria-label="Default select example">
-                                        <option selected>Category</option>
-                                        <option value="electronics">Electronics</option>
-                                        <option value="apparel">Apparel</option>
-                                      </select>
-                            </span>
-                            <!-- Submit button -->
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </div>
-                    </form>
-                    <ul class="navbar-nav ms-2">
-                        <!-- Wishlist -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#wishlist" id="navbar-heart-icon-offset"><img class="navbar-img"
-                                    src="images/icons/bootstrap/heart-fill.svg" alt=""><span class="d-sm-none ms-2 fs-1">Wishlist</span></a>
-                        </li>
-                        <!-- Notifications -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#notif"><img class="navbar-img"
-                                    src="images/icons/bootstrap/bell.svg" alt=""><span class="d-sm-none ms-2 fs-1">Notifications</span></a>
-                        </li>
-                        <!-- Account -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#account"><img class="navbar-img"
-                                    src="images/icons/bootstrap/person-circle.svg" alt=""><span class="d-sm-none ms-2 fs-1">Account</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+              </div>
+            </form>
+            <ul class="navbar-nav ms-2">
+              <!-- Wishlist -->
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#wishlist"
+                  id="navbar-heart-icon-offset"
+                  ><img
+                    class="navbar-img"
+                    src="images/icons/bootstrap/heart-fill.svg"
+                    alt=""
+                  /><span class="d-sm-none ms-2 fs-1">Wishlist</span></a
+                >
+              </li>
+              <!-- Notifications -->
+              <li class="nav-item">
+                <a class="nav-link" href="#notif"
+                  ><img
+                    class="navbar-img"
+                    src="images/icons/bootstrap/bell.svg"
+                    alt=""
+                  /><span class="d-sm-none ms-2 fs-1">Notifications</span></a
+                >
+              </li>
+              <!-- Account -->
+              <li class="nav-item">
+                <a class="nav-link" href="#account"
+                  ><img
+                    class="navbar-img"
+                    src="images/icons/bootstrap/person-circle.svg"
+                    alt=""
+                  /><span class="d-sm-none ms-2 fs-1">Account</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <main>
-        <p class="fs-1 mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur dolor,
-            aliquid
-            consectetur
-            temporibus quae corrupti? Id autem molestiae iure, laudantium accusamus doloremque rem ipsam, adipisci
-            totam
-            dolorum atque et.
-            Dolore saepe illo architecto modi, quae accusantium pariatur. Qui rem at, veniam quos, perspiciatis
-            aspernatur exercitationem dolorem, laboriosam esse laudantium deserunt ratione in quisquam adipisci
-            labore
-            sit tenetur repellendus repudiandae!
-            Doloribus dignissimos nostrum exercitationem temporibus explicabo accusamus maxime cum harum enim
-            repellendus fugit quas quisquam mollitia soluta, officia quia, suscipit consectetur a nesciunt
-            voluptas,
-            unde saepe esse nisi ratione. Vitae.
-            Sed quas minima ratione facere iste. Recusandae odio rerum mollitia numquam quas voluptas nisi amet
-            provident. Nobis consequatur facere dolores, necessitatibus, adipisci exercitationem eos fugiat id ea
-            culpa
-            recusandae blanditiis?
-            Quisquam eos accusantium hic iure facilis aliquid temporibus praesentium quis rerum sint assumenda at
-            dolores, laudantium dolor cumque quidem ullam commodi delectus enim eius dolore nihil maxime
-            necessitatibus
-            ad? Dolorum!</p>
+      <p class="fs-1 mb-0">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+        aspernatur dolor, aliquid consectetur temporibus quae corrupti? Id autem
+        molestiae iure, laudantium accusamus doloremque rem ipsam, adipisci
+        totam dolorum atque et. Dolore saepe illo architecto modi, quae
+        accusantium pariatur. Qui rem at, veniam quos, perspiciatis aspernatur
+        exercitationem dolorem, laboriosam esse laudantium deserunt ratione in
+        quisquam adipisci labore sit tenetur repellendus repudiandae! Doloribus
+        dignissimos nostrum exercitationem temporibus explicabo accusamus maxime
+        cum harum enim repellendus fugit quas quisquam mollitia soluta, officia
+        quia, suscipit consectetur a nesciunt voluptas, unde saepe esse nisi
+        ratione. Vitae. Sed quas minima ratione facere iste. Recusandae odio
+        rerum mollitia numquam quas voluptas nisi amet provident. Nobis
+        consequatur facere dolores, necessitatibus, adipisci exercitationem eos
+        fugiat id ea culpa recusandae blanditiis? Quisquam eos accusantium hic
+        iure facilis aliquid temporibus praesentium quis rerum sint assumenda at
+        dolores, laudantium dolor cumque quidem ullam commodi delectus enim eius
+        dolore nihil maxime necessitatibus ad? Dolorum!
+      </p>
     </main>
     <!-- Checkout footer -->
     <footer class="sticky-bottom bg-light">
-        <div class="container-fluid p-0">
-            <div class="row text-center m-0">
-                <!-- List items in cart -->
-                <div class="col bg-success checkout">
-                    <p class="mx-0 my-1 text-white">ITEMS</p>
-                </div>
-                <!-- Total cost of cart -->
-                <div class="col-2 col-md-1 checkout bg-white">
-                    <p class="mx-0 my-1">$25.25</p>
-                </div>
-                <!-- Checkout button -->
-                <div class="col-3 col-md-2 px-0">
-                    <button id="checkout-button" class="checkout p-0">Checkout
-                        <span class="badge bg-danger mx-0 my-1">5</span></button>
-                </div>
-            </div>
+      <div class="container-fluid p-0">
+        <div class="row text-center m-0">
+          <!-- List items in cart -->
+          <div class="col bg-success checkout">
+            <p class="mx-0 my-1 text-white">ITEMS</p>
+          </div>
+          <!-- Total cost of cart -->
+          <div class="col-2 col-md-1 checkout bg-white">
+            <p class="mx-0 my-1">$25.25</p>
+          </div>
+          <!-- Checkout button -->
+          <div class="col-3 col-md-2 px-0">
+            <button id="checkout-button" class="checkout p-0">
+              Checkout <span class="badge bg-danger mx-0 my-1">5</span>
+            </button>
+          </div>
         </div>
+      </div>
     </footer>
     <!-- Bootstrap js with Popper -->
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
-</body>
-
+  </body>
 </html>
