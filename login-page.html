@@ -4,13 +4,33 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>MokeSell</title>
-
+        <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
     </head>
-    <body>
-        <main>
-            
-        </main>
+    <body div class = "container d-flex justify-content-center align-items-center vh-100">
+        <div class = "text-center w-100">
+            <hi class = "mb-4">
+                <span style = "font-family: Arial, sans-serif; font-weight: bold;">Moke</span>
+                <span style = "color: purple;">S</span>ell
+            </hi>
+
+            <div class = "d-flex justify-content-center border-bottom mb-4">
+                <a href = "#" class = "text-decoration-none text-dark fw-bold border-bottom border-dark">LOGIN</a>
+                <span>|</span>
+                <a href = "#" class = "text-decoration-none text-dark">SIGN UP</a>
+            </div>
+
+            <form id = "loginForm">
+                <div class = "mb-3">
+                    <input type = "text" class = "form-control text-center rounded-pill" id = "username" placeholder = " Enter username" required>
+                </div> 
+              <div class = "mb-3">
+                    <input type = "password" class = "form-control text-center rounded-pill" id = "password" placeholder = " Enter password" required>
+                </div>
+                <button type = "submit" class = "btn btn-primary rounded-pill w-100">LOGIN</button>
+            </form>
+        </div>
+
         <script src="bootstrap/js/bootstrap.js"></script>
-    </body>
+        </body>
 </html>
