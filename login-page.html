@@ -14,22 +14,29 @@
                 <span style = "color: purple; font-size: 100px">S</span> <span style = "font-size: 100px">ell</span>
             </hi>
             
-            <div class = "d-flex flex-column align-items-center mt-5">
+            <div class = "d-flex flex-column align-items-center mb-4">
                 <div class = "d-flex justify-content-center align-items-center border-bottom mb-4">
                     <a href = "#" class = "text-decoration-none text-dark fw-bold border-bottom border-dark mx-8">LOGIN</a>
                     <span class = "mx-5">|</span>
                     <a href = "#" class = "text-decoration-none text-dark">SIGN UP</a>
                 </div>
 
-                <form id = "loginForm">
-                    <div class = "mb-3">
-                        <input type = "text" class = "form-control text-center rounded-pill" id = "username" placeholder = " Enter username" required>
-                    </div> 
+                <form class = "w-25">
 
                     <div class = "mb-3">
-                        <input type = "password" class = "form-control text-center rounded-pill" id = "password" placeholder = " Enter password" required>
+                        <label for = "usernameInput" class = "form-label">Username</label>
+                        <input type = "text" class = "form-control" id = "usernameInput">
                     </div>
-                    <button type = "submit" class = "btn btn-primary rounded-pill w-100">LOGIN</button>
+
+                    <div class = "mb-3">
+                        <label for = "password" class = "form-label">Password</label>
+                        <input type = "password" class = "form-control" id = "password" />
+                    </div>
+                    
+                    <div class = "d-flex flex-column align-items-center">
+                        <button type = "submit" class = "btn btn-primary">Login</button>
+                    </div>
+
                 </form>
             </div>
         </div>
