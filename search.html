@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MokeSell</title>
+    <title>Search Results</title>
 
     <!-- Smooch Sans Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +19,6 @@
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
-
   <body>
     <!-- Main navigation bar -->
     <header class="sticky-top">
@@ -44,7 +43,7 @@
           </button>
           <!-- Collapse into burger on small devices -->
           <div class="collapse navbar-collapse" id="navbarToggler">
-            <form class="d-flex w-100" role="search" action="search.html">
+            <form class="d-flex w-100" role="search">
               <div class="input-group">
                 <!-- Inline search icon -->
                 <span class="input-group-text"
@@ -60,7 +59,6 @@
                   type="search"
                   placeholder="Used Macbook Pro"
                   aria-label="Search"
-                  name="q"
                 />
                 <!-- Select Category dropdown -->
                 <span class="input-group-text p-0 dropdown">
@@ -118,13 +116,80 @@
         </div>
       </nav>
     </header>
-    <main>
-      <p class="mb-0" style="font-size: 75px">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-        magnam soluta nulla debitis officiis voluptates porro, harum fugit iure
-        dolores aliquid accusantium incidunt vitae blanditiis, voluptatem,
-        quaerat id ratione quibusdam.
-      </p>
+    <main class="mb-2">
+      <div class="container">
+        <h1>Search for:</h1>
+        <div class="row">
+          <div class="col-3 px-2">
+            <div class="card">
+              <img
+                src="https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2F0fGVufDB8fDB8fHww"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 px-2">
+            <div class="card">
+              <img
+                src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 px-2">
+            <div class="card">
+              <img
+                src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfHx8MA%3D%3D"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 px-2">
+            <div class="card">
+              <img
+                src="https://plus.unsplash.com/premium_photo-1707353401897-da9ba223f807?q=80&w=4140&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <!-- Checkout footer -->
     <footer class="sticky-bottom bg-light">
@@ -147,7 +212,8 @@
         </div>
       </div>
     </footer>
-    <!-- Bootstrap js with Popper -->
-    <script src="bootstrap/js/bootstrap.bundle.js"></script>
   </body>
+  <!-- Bootstrap js with Popper -->
+  <script src="bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="js/search-query.js"></script>
 </html>

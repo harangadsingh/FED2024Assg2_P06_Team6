@@ -1,0 +1,63 @@
+body {
+  font-family: "Smooch Sans", sans-serif;
+  background-color: grey;
+}
+
+/* //////////////////
+MAIN NAVIGATION BAR
+////////////////// */
+.navbar-brand {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.navbar-brand span {
+  color: purple;
+}
+
+.inline-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.navbar-img {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* The icon looks too tall when beside the other icons */
+#navbar-heart-icon-offset {
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+/* //////////////////
+////////////////// */
+
+/* //////////////////
+DESKTOP CHECKOUT FOOTER
+////////////////// */
+.checkout {
+  margin: 0;
+  border: none;
+  height: 100%;
+  font-size: 1.25rem;
+}
+
+#checkout-button {
+  background-color: greenyellow;
+  width: 100%;
+}
+/* //////////////////
+////////////////// */
+
+/* //////////////////
+SEARCH PAGE
+////////////////// */
+.card img {
+  width: 100%;
+  height: 300px;
+}
+/* //////////////////
+////////////////// */
