@@ -1,5 +1,6 @@
 body {
   font-family: "Smooch Sans", sans-serif;
+  background-color: grey;
 }
 
 /* //////////////////
@@ -33,10 +34,6 @@ MAIN NAVIGATION BAR
 }
 /* //////////////////
 ////////////////// */
-
-main {
-  background-color: grey;
-}
 
 /* //////////////////
 DESKTOP CHECKOUT FOOTER
