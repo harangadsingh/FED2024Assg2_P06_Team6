@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MokeSell</title>
+        
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    </head>
+    <body div class = "container d-flex flex-column justify-content-center align-items-center vh-100">
+        <div class = "text-center">
+            <h1 class = "mb-4">
+                <span style = "font-family: Arial, sans-serif; font-size: 100px">Moke</span>
+                <span style = "color: purple; font-size: 100px">S</span> <span style = "font-size: 100px">ell</span>
+            </h1>
+            
+            <div class = "d-flex flex-column align-items-center mb-4">
+                <div class = "d-flex justify-content-center align-items-center mb-4">
+                    <a href = "#" class = "text-decoration-none text-dark">LOGIN</a>
+                    <span class = "mx-5">|</span>
+                    <a href = "#" class = "text-decoration-none text-dark fw-bold border-bottom border-dark mx-8">SIGN UP</a>
+                </div>
+            </div>
+        </div>
+
+        <form class = "w-25">
+            <div class = "mb-3">
+                <label for = "usernameInput1" class = "form-label">Username</label>
+                <input type = "text" class = "form-control" id = "usernameInput1" placeholder = "Enter your username">
+            </div>
+            
+            <div class = "mb-3">
+                <label for = "emailInput1" class = "form-label">Email</label>
+                <input type = "email" class = "form-control" id = "emailInput1" placeholder = "Enter your email">
+                <div id = "emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class = "mb-3">
+                <label for = "passwordInput1" class = "form-label">Password</label>
+                <input type ="password" class = "form-control" id = "passwordInput1" placeholder = "Enter your password">
+                <div id = "passwordHelp" class = "form-text"> Make sure your password is strong and has at least 8 characters!</div>
+            </div>
+            
+            <div class = "mb-3 form-check">
+                <input type = "checkbox" class = "form-check-input" id = "check1">
+                <label class = "form-check-label" for = "check1">I agree to the terms and conditions</label>
+            </div>
+
+            <div class = "d-flex justify-content-center">
+                <button type = "submit" style = "background-color: black;" class = "btn btn-primary">Sign Up</button>
+            </div>
+
+        </form>
+
+        <script src="bootstrap/js/bootstrap.js"></script>
+    </body>
+</html>
