@@ -37,7 +37,7 @@ function signUpFunction() {
       .then((data) => {
         console.log(data);
         alert("Account created successfully!");
-        window.location.href = "login.html";
+        window.location.href = "signup-page.html";
       })
       .catch((e) => {
         console.log(e);
