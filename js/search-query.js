@@ -48,9 +48,21 @@ fetch(listingUrl, {
   })
   .then((filteredData) => {
     console.log(filteredData);
-    const listingTitle = document.querySelector(".listing-title");
-    listingTitle.innerText = filteredData[currentListingIndex];
+
+    for (let i = 0; i <= filteredData.length; i++) {
+      showListing(filteredData[i].name);
+    }
+
+    // showListing(filteredData[currentListingIndex]);
   })
   .catch((e) => {
     console.log(e);
   });
+
+const listingsContainer = document.querySelector(".listing");
+
+function showListing(listingName) {
+  const newListingTitle = document.createElement("h2");
+  newListingTitle.innerText = listingName;
+  listingsContainer.append(newListingTitle);
+}
