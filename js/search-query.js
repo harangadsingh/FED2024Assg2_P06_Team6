@@ -1,4 +1,10 @@
-// Fetch Listing
+//Some variables that need to initialized first
+let searchQuery = "";
+let searchCategory = "";
+const listings = []; //Contains the information of the listings that fit the search parameters
+let currentListingIndex = 0; //To be used the access the elements of 'listings'
+
+//API
 const apiKey = "67960fb80acc0626570d3648";
 const listingUrl = "https://mokesellfed-153b.restdb.io/rest/listing";
 
