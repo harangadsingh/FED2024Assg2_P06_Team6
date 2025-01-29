@@ -43,7 +43,12 @@
                     </button>
                     <!-- Collapse into burger on small devices -->
                     <div class="collapse navbar-collapse" id="navbarToggler">
-                        <form class="d-flex w-100" role="search">
+                        <form
+                            class="d-flex w-100"
+                            role="search"
+                            action="search.html"
+                            method="GET"
+                        >
                             <div class="input-group">
                                 <!-- Inline search icon -->
                                 <span class="input-group-text"
@@ -60,6 +65,7 @@
                                     type="search"
                                     placeholder="Used Macbook Pro"
                                     aria-label="Search"
+                                    name="query"
                                 />
                                 <!-- Select Category dropdown -->
                                 <span class="input-group-text p-0 dropdown">
@@ -67,6 +73,7 @@
                                         id="searchbar-category"
                                         class="form-select border-0"
                                         aria-label="Default select example"
+                                        name="category"
                                     >
                                         <option selected>Category</option>
                                         <option value="electronics">
