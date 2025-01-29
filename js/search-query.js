@@ -27,44 +27,42 @@ searchCategorySpan.innerText = searchCategory;
 
 // Fetch Listings
 fetch(listingUrl, {
-  headers: {
-    "x-apikey": apiKey,
-  },
+    headers: {
+        "x-apikey": apiKey,
+    },
 })
-  .then((res) => {
-    console.log("API call is successful.");
-    return res.json();
-  })
-  .then((data) => {
-    console.log("Retrieved data from API.");
-    console.log(data);
-    const filteredData = [];
-    for (const element of data) {
-      console.log(searchQuery);
-      if (element.name.includes(searchQuery)) {
-        filteredData.push(element);
-      }
-    }
-    return filteredData;
-  })
-  .then((filteredData) => {
-    console.log(`Filtered data for query: "${searchQuery}"`);
-    console.log(filteredData);
+    .then((res) => {
+        console.log("API call is successful.");
+        return res.json();
+    })
+    .then((data) => {
+        console.log("Retrieved data from API.");
+        console.log(data);
+        const filteredData = [];
+        for (const element of data) {
+            console.log(searchQuery);
+            if (element.name.includes(searchQuery)) {
+                filteredData.push(element);
+            }
+        }
+        return filteredData;
+    })
+    .then((filteredData) => {
+        console.log(`Filtered data for query: "${searchQuery}"`);
+        console.log(filteredData);
 
-    for (let i = 0; i <= filteredData.length; i++) {
-      showListing(filteredData[i].name);
-    }
-
-    // showListing(filteredData[currentListingIndex]);
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+        for (let i = 0; i <= filteredData.length; i++) {
+            showListing(filteredData[i].name);
+        }
+    })
+    .catch((e) => {
+        console.log(e);
+    });
 
 const listingsContainer = document.querySelector(".listing");
 
 function showListing(listingName) {
-  const newListingTitle = document.createElement("h2");
-  newListingTitle.innerText = listingName;
-  listingsContainer.append(newListingTitle);
+    const newListingTitle = document.createElement("h2");
+    newListingTitle.innerText = listingName;
+    listingsContainer.append(newListingTitle);
 }
