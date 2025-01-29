@@ -12,10 +12,17 @@ const urlParams = new URLSearchParams(window.location.search);
 searchQuery = urlParams.get("query");
 searchCategory = urlParams.get("category");
 
-const searchbarInput = document.querySelector("#searchbar-input");
-const searchbarCategory = document.querySelector("#searchbar-category");
-searchbarInput.value = searchQuery;
-searchbarCategory.value = searchCategory;
+let searchbarInput = "";
+let searchbarCategory = "";
+
+//Using a very scuffed way to ensure these elements exist before assigning them, because these are created by template-replace.js.
+//God bless Godot's "await get_tree().create_timer(0.1).timeout"
+setTimeout(() => {
+    searchbarInput = document.querySelector("#searchbar-input");
+    searchbarCategory = document.querySelector("#searchbar-category");
+    searchbarInput.value = searchQuery;
+    searchbarCategory.value = searchCategory;
+}, 100);
 
 searchCategory = searchCategory[0].toUpperCase() + searchCategory.slice(1); //Capitalize first letter to be shown in span
 
