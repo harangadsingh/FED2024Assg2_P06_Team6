@@ -117,74 +117,143 @@
       </nav>
     </header>
     <main class="mb-2">
-      <div class="container">
-        <h1>Search for:</h1>
+      <div class="container-fluid p-0">
+        <p>Home > Listings > Electronics</p>
+      </div>
+      <div class="container-fluid pt-0 px-3">
+        <h1>Results for: "<span class="search-query">Banana</span>"</h1>
         <div class="row">
-          <div class="col-3 px-2">
-            <div class="card">
-              <img
-                src="https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2F0fGVufDB8fDB8fHww"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+          <div class="col-1 px-0 ms-2">
+            <div id="filters">
+              <label for="">Condition</label>
+              <ul>
+                <li><input type="checkbox" /> Brand new</li>
+                <li><input type="checkbox" /> Like new</li>
+                <li><input type="checkbox" /> Used</li>
+                <li><input type="checkbox" /> Broken</li>
+              </ul>
+              <label for="">Delivery</label>
+              <ul>
+                <li><input type="checkbox" />Shipping</li>
+                <li><input type="checkbox" />Meet up</li>
+              </ul>
             </div>
           </div>
-          <div class="col-3 px-2">
-            <div class="card">
-              <img
-                src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-3 px-2">
-            <div class="card">
-              <img
-                src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfHx8MA%3D%3D"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-3 px-2">
-            <div class="card">
-              <img
-                src="https://plus.unsplash.com/premium_photo-1707353401897-da9ba223f807?q=80&w=4140&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col">
+            <div class="listing">
+              <div class="container me-5 p-0">
+                <div class="row">
+                  <div class="col-5">
+                    <div id="carouselExampleIndicators" class="carousel slide">
+                      <div class="carousel-indicators">
+                        <button
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide-to="0"
+                          class="active"
+                          aria-current="true"
+                          aria-label="Slide 1"
+                        ></button>
+                        <button
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide-to="1"
+                          aria-label="Slide 2"
+                        ></button>
+                        <button
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide-to="2"
+                          aria-label="Slide 3"
+                        ></button>
+                      </div>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img
+                            src="https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2F0fGVufDB8fDB8fHww"
+                            class="d-block w-100"
+                            alt="..."
+                          />
+                        </div>
+                        <div class="carousel-item">
+                          <img
+                            src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww"
+                            class="d-block w-100"
+                            alt="..."
+                          />
+                        </div>
+                        <div class="carousel-item">
+                          <img
+                            src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2F0fGVufDB8fDB8fHww"
+                            class="d-block w-100"
+                            alt="..."
+                          />
+                        </div>
+                      </div>
+                      <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev"
+                      >
+                        <span
+                          class="carousel-control-prev-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next"
+                      >
+                        <span
+                          class="carousel-control-next-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <h1 class="listing-title">
+                      Lorem ipsum, dolor sit amet consectetur
+                    </h1>
+                    <p class="lissting-description">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Laboriosam modi ut magni error praesentium, totam labore
+                      exercitationem voluptates deleniti explicabo eos non
+                      quibusdam reprehenderit vero similique tenetur corporis
+                      ipsum distinctio! Eos repudiandae adipisci iste commodi!
+                      Odit iure pariatur alias sint dolor nobis sit voluptatum
+                      consequatur inventore expedita officia fugiat earum quod
+                      illum perspiciatis ipsa, tempore neque asperiores sunt
+                      blanditiis laborum.
+                    </p>
+                    <hr />
+                    <h2>Quality: <span>Like New</span></h2>
+                    <p>Few scratches</p>
+                    <hr />
+                    <h2>Delivery:</h2>
+                    <p>
+                      Meet up at Clementi MRT Station <br />
+                      Weekdays: 2pm-6pm <br />
+                      Weekend: 12pm-8pm
+                    </p>
+                    <hr />
+                    <button class="btn btn-primary">Chat with Seller</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <img
+                    class="account-profile-picture"
+                    src="images/index/placeholder.jpg"
+                    alt=""
+                  />
+                  <h2>SamanthaT1998</h2>
+                  <h3>Ratings: 5*</h3>
+                </div>
               </div>
             </div>
           </div>
