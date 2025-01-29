@@ -41,7 +41,7 @@ fetch(listingUrl, {
     for (const element of data) {
       console.log(searchQuery);
       if (element.name.includes(searchQuery)) {
-        filteredData.push(searchQuery);
+        filteredData.push(element);
       }
     }
     return filteredData;
