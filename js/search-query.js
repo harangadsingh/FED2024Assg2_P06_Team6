@@ -32,10 +32,11 @@ fetch(listingUrl, {
   },
 })
   .then((res) => {
-    console.log("Success!");
+    console.log("API call is successful.");
     return res.json();
   })
   .then((data) => {
+    console.log("Retrieved data from API.");
     console.log(data);
     const filteredData = [];
     for (const element of data) {
@@ -47,6 +48,7 @@ fetch(listingUrl, {
     return filteredData;
   })
   .then((filteredData) => {
+    console.log(`Filtered data for query: "${searchQuery}"`);
     console.log(filteredData);
 
     for (let i = 0; i <= filteredData.length; i++) {
