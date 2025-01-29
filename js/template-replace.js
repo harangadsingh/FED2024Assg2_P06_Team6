@@ -1,3 +1,5 @@
+// <div id="replace-with-navbar"></div>;
+
 fetch("html-templates/main-navbar.html")
     .then((res) => res.text())
     .then((text) => {
@@ -6,6 +8,8 @@ fetch("html-templates/main-navbar.html")
         newelem.innerHTML = text;
         oldelem.parentNode.replaceChild(newelem, oldelem);
     });
+
+// <div id="replace-with-checkout"></div>;
 
 fetch("html-templates/checkout-footer.html")
     .then((res) => res.text())
