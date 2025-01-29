@@ -31,11 +31,19 @@ fetch(listingUrl, {
   })
   .then((data) => {
     console.log(data);
-    const cardTitles = document.querySelectorAll(".card-title");
-
-    for (let i = 0; i < cardTitles.length; i++) {
-      cardTitles[i].innerText = data[i].name;
+    const filteredData = [];
+    for (const element of data) {
+      console.log(searchQuery);
+      if (element.name.includes(searchQuery)) {
+        filteredData.push(searchQuery);
+      }
     }
+    return filteredData;
+  })
+  .then((filteredData) => {
+    console.log(filteredData);
+    const listingTitle = document.querySelector(".listing-title");
+    listingTitle.innerText = filteredData[currentListingIndex];
   })
   .catch((e) => {
     console.log(e);
