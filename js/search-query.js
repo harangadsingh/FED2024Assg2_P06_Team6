@@ -60,6 +60,12 @@ fetch(listingUrl, {
 
 const listingsContainer = document.querySelector(".listing");
 
+//LOCAL LISTINGS CODE
+const listings = ["Test1", "Test2", "Test3", "Test4", "Banana"];
+for (const listing of listings) {
+    listing.includes(searchQuery) && showListing(listing);
+}
+
 function showListing(listingName) {
     const newListingTitle = document.createElement("h2");
     newListingTitle.innerText = listingName;
