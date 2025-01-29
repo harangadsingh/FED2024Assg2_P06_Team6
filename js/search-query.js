@@ -1,7 +1,6 @@
 //Some variables that need to initialized first
 let searchQuery = "";
 let searchCategory = "";
-const listings = []; //Contains the information of the listings that fit the search parameters
 let currentListingIndex = 0; //To be used the access the elements of 'listings'
 
 //API
