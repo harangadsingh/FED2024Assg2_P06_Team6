@@ -114,3 +114,7 @@ button {
   border-radius: 50%;
   display: inline;
 }
+
+#breadcrumb a {
+  color: white;
+}
