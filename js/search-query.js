@@ -22,3 +22,20 @@ fetch(listingUrl, {
   .catch((e) => {
     console.log(e);
   });
+
+//Get search query from searchbar
+const urlParams = new URLSearchParams(window.location.search);
+const searchQuery = urlParams.get("query");
+let searchCategory = urlParams.get("category");
+
+const searchbarInput = document.querySelector("#searchbar-input");
+const searchbarCategory = document.querySelector("#searchbar-category");
+searchbarInput.value = searchQuery;
+searchbarCategory.value = searchCategory;
+
+searchCategory = searchCategory[0].toUpperCase() + searchCategory.slice(1);
+
+const searchQuerySpan = document.querySelector("#search-query");
+searchQuerySpan.innerText = searchQuery;
+const searchCategorySpan = document.querySelector("#search-category");
+searchCategorySpan.innerText = searchCategory;
