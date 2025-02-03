@@ -1,7 +1,8 @@
 //Some variables that need to initialized first
 let searchQuery = "";
 let searchCategory = "";
-let currentListingIndex = 0; //To be used the access the elements of 'listings'
+let createdListings = [];
+let currentListingIndex = 0;
 
 //API
 const apiKey = "67960fb80acc0626570d3648";
@@ -33,6 +34,8 @@ searchQuerySpan.innerText = searchQuery;
 const searchCategorySpan = document.querySelector("#search-category");
 searchCategorySpan.innerText = searchCategory;
 
+const listingsContainer = document.querySelector(".listing");
+
 // Fetch Listings
 //THIS IS WORKING, BUT IT'S COMMENTED OUT TO PREVENT HITTING THE 500 DAILY CALLS RESTDB HAS.
 //LOOK BELOW FOR LOCAL CODE CREATING LISTINGS.
@@ -60,24 +63,94 @@ searchCategorySpan.innerText = searchCategory;
 //     .then((filteredData) => {
 //         console.log(`Filtered data for query: "${searchQuery}"`);
 //         console.log(filteredData);
-//         for (let i = 0; i <= filteredData.length; i++) {
-//             showListing(filteredData[i].name);
+//         for (let i = 0; i < filteredData.length; i++) {
+//             listing = filteredData[i];
+
+//             let newListing = createListingElements(listing);
+//             createdListings.push(newListing);
 //         }
+
+//         createdListings[0].classList.remove("d-none"); //Unhide the first listing created
 //     })
 //     .catch((e) => {
 //         console.log(e);
 //     });
 
-const listingsContainer = document.querySelector(".listing");
-
 //LOCAL LISTINGS CODE
-const listings = ["Test1", "Test2", "Test3", "Test4", "Banana"];
-for (const listing of listings) {
-    listing.includes(searchQuery) && showListing(listing);
+createLocalListings();
+function createLocalListings() {
+    const listings = [
+        {
+            name: "Test1",
+            itemDesc: "Banana",
+            qualityDesc: "Brand New",
+            deliveryDesc: "Clementi MRT\nWeekdays: 2pm - 5pm",
+        },
+        {
+            name: "Test2",
+            itemDesc: "Apple",
+            qualityDesc: "Used - Good Condition",
+            deliveryDesc: "Jurong East MRT\nWeekends: 10am - 1pm",
+        },
+        {
+            name: "Test3",
+            itemDesc: "Orange",
+            qualityDesc: "Brand New",
+            deliveryDesc: "Orchard MRT\nWeekdays: 6pm - 8pm",
+        },
+        {
+            name: "Test4",
+            itemDesc: "Grapes",
+            qualityDesc: "Used - Like New",
+            deliveryDesc: "Bishan MRT\nWeekends: 2pm - 5pm",
+        },
+        {
+            name: "Test5",
+            itemDesc: "Mango",
+            qualityDesc: "Brand New",
+            deliveryDesc: "Dhoby Ghaut MRT\nWeekdays: 1pm - 4pm",
+        },
+    ];
+
+    for (let i = 0; i < listings.length; i++) {
+        let listing = listings[i];
+
+        if (listing.name.includes(searchQuery)) {
+            let newListing = createListingElements(listing);
+            createdListings.push(newListing);
+        }
+    }
+    createdListings[0].classList.remove("d-none"); //Unhide the first listing created
 }
 
-function showListing(listingName) {
-    const newListingTitle = document.createElement("h2");
-    newListingTitle.innerText = listingName;
-    listingsContainer.append(newListingTitle);
+
+function createListingElements(listing) {
+    const listingName = listing.name;
+    const itemDesc = listing.itemDesc;
+    const qualityDesc = listing.qualityDesc;
+    const deliveryDesc = listing.deliveryDesc;
+
+    const container = document.createElement("div");
+    container.classList.add("d-none");
+    listingsContainer.append(container);
+
+    createAppendElement("h2", listingName, container);
+    createAppendElement("p", itemDesc, container);
+    createAppendElement("hr", "", container);
+
+    createAppendElement("h2", "Quality", container);
+    createAppendElement("p", qualityDesc, container);
+    createAppendElement("hr", "", container);
+
+    createAppendElement("h2", "Delivery", container);
+    createAppendElement("p", deliveryDesc, container);
+    createAppendElement("hr", "", container);
+
+    return container;
+}
+
+function createAppendElement(elementType, text, parent) {
+    const element = document.createElement(elementType);
+    element.innerText = text;
+    parent.append(element);
 }
