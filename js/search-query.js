@@ -123,6 +123,19 @@ function createLocalListings() {
     createdListings[0].classList.remove("d-none"); //Unhide the first listing created
 }
 
+window.addEventListener("keydown", (e) => {
+    if (e.code == "ArrowRight" || e.code == "ArrowLeft") {
+        createdListings[currentListingIndex].classList.add("d-none");
+        currentListingIndex++;
+        createdListings[currentListingIndex].classList.remove("d-none");
+
+        if (e.code == "ArrowRight") {
+            console.log("Added to likes.");
+        } else if (e.code == "ArrowLeft") {
+            console.log("Trashed.");
+        }
+    }
+});
 
 function createListingElements(listing) {
     const listingName = listing.name;
