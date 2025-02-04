@@ -118,4 +118,9 @@ button {
 #breadcrumb a {
     color: white;
 }
+
+.listing-control-icon img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* Make the icons white */
+    width: 30px;
+    height: 50px;
 }
