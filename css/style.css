@@ -61,3 +61,35 @@ SEARCH PAGE
 }
 /* //////////////////
 ////////////////// */
+
+/* //////////////////
+LOGIN PAGE
+////////////////// */
+
+/* //////////////////
+body {
+    background-color: #f8f9fa; 
+    margin: 0; 
+    font-family: Arial, sans-serif; 
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 350px; 
+}
+
+input {
+    background-color: #d3d3d3;
+    border: none;
+    font-size: 14px;
+}
+
+button {
+    font-size: 14px;
+    font-weight: bold;
+}
+////////////////// */
