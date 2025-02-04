@@ -68,10 +68,11 @@ SEARCH PAGE
     background-color: green;
 }
 
-#filters {
-    background-color: purple;
+.filters label {
+    width: 100px;
+    background-color: #e0e0e0;
+    color: black;
 }
-
 
 .account-profile-picture {
     height: 100px;
