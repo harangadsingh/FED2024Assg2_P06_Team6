@@ -36,7 +36,7 @@
                   </div>
                 </div>
               </div>
-              <form action="#!">
+              <form id="loginForm" action="#!">
                 <div class="row gy-3 overflow-hidden">
                   <div class="col-12">
                     <div class="form-floating mb-3">
@@ -51,6 +51,8 @@
                     </div>
                   </div>
                   
+                  <div id="loadingMessage" style="display: none;">Logging in, please wait...</div>
+                  
                   <div class="col-12">
                     <div class="d-grid">
                       <button class="btn btn-primary btn-lg" type="submit">Log in now</button>
@@ -64,6 +66,5 @@
       </div>
     </div>
   </section>
-  <script src="bootstrap/js/bootstrap.js"></script>
   <script src="js/login-API.js"></script>
 </html>
