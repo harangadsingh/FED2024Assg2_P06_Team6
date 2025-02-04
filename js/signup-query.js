@@ -6,12 +6,12 @@ function signUpFunction() {
   signUpForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(signUpForm);
-    const name = formData.get("name");
+    const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
     // const confirmPassword = formData.get("confirm-password");
     const data = {
-      name,
+      username,
       email,
       password,
     };
