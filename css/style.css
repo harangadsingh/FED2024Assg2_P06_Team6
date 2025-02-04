@@ -1,40 +1,40 @@
 body {
-  font-family: "Smooch Sans", sans-serif;
-  background-color: #2d2d2d;
+    font-family: "Smooch Sans", sans-serif;
+    background-color: #2d2d2d;
 }
 
 main {
-  color: white;
+    color: white;
 }
 
 /* //////////////////
 MAIN NAVIGATION BAR
 ////////////////// */
 .navbar-brand {
-  text-decoration: none;
-  color: black;
-  font-size: 2rem;
-  font-weight: 200;
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    font-weight: 200;
 }
 
 .navbar-brand span {
-  color: purple;
+    color: purple;
 }
 
 .inline-icon {
-  width: 1rem;
-  height: 1rem;
+    width: 1rem;
+    height: 1rem;
 }
 
 .navbar-img {
-  width: 2rem;
-  height: 2rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 /* The icon looks too tall when beside the other icons */
 #navbar-heart-icon-offset {
-  padding-top: 10px;
-  padding-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 0px;
 }
 /* //////////////////
 ////////////////// */
@@ -43,15 +43,15 @@ MAIN NAVIGATION BAR
 DESKTOP CHECKOUT FOOTER
 ////////////////// */
 .checkout {
-  margin: 0;
-  border: none;
-  height: 100%;
-  font-size: 1.25rem;
+    margin: 0;
+    border: none;
+    height: 100%;
+    font-size: 1.25rem;
 }
 
 #checkout-button {
-  background-color: greenyellow;
-  width: 100%;
+    background-color: greenyellow;
+    width: 100%;
 }
 /* //////////////////
 ////////////////// */
@@ -60,16 +60,16 @@ DESKTOP CHECKOUT FOOTER
 SEARCH PAGE
 ////////////////// */
 .carousel img {
-  width: 100%;
-  height: 500px;
+    width: 100%;
+    height: 500px;
 }
 
 .listing {
-  background-color: green;
+    background-color: green;
 }
 
 #filters {
-  background-color: purple;
+    background-color: purple;
 }
 
 /* //////////////////
@@ -108,13 +108,14 @@ button {
 ////////////////// */
 
 .account-profile-picture {
-  height: 100px;
-  width: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: inline;
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: inline;
 }
 
 #breadcrumb a {
-  color: white;
+    color: white;
+}
 }
