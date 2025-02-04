@@ -4,43 +4,41 @@ const listingUrl = "https://mokesellfed-153b.restdb.io/rest/accounts";
 function signUpFunction() {
   const signUpForm = document.querySelector(".signup-form");
   signUpForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const formData = new FormData(signUpForm);
-    const username = formData.get("username");
-    const email = formData.get("email");
-    const password = formData.get("password");
-    // const confirmPassword = formData.get("confirm-password");
-    const data = {
-      username,
-      email,
-      password,
-    };
-    
-    /*
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    */
+  e.preventDefault();
+  const formData = new FormData(signUpForm);
+  const username = formData.get("username");
+  const email = formData.get("email");
+  const password = formData.get("password");
+  const data = {
+  username,
+  email,
+  password,
+  };
 
-    fetch(listingUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-apikey": apiKey,
-      },
-      body: JSON.stringify(data),
+  fetch(listingUrl, {
+    method: "POST",
+    headers: {
+       "Content-Type": "application/json",
+       "x-apikey": apiKey,
+    },
+    body: JSON.stringify(data),
     })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        alert("Account created successfully!");
-        window.location.href = "signup-page.html";
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  .then((res) => {
+  if (!res.ok) {
+    throw new Error("Failed to create account");
+      }
+    return res.json();
+  })
+  .then((data) => {
+     console.log(data);
+     alert("Account created successfully!");
+     window.location.href = "index.html";
+  })
+  .catch((e) => {
+    console.error(e);
+     alert("An error occurred. Please try again.");
   });
+ });
 }
+
+document.addEventListener("DOMContentLoaded", signUpFunction);
