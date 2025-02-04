@@ -13,6 +13,18 @@ const urlParams = new URLSearchParams(window.location.search);
 searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
 searchCategory = urlParams.get("category") ? urlParams.get("category") : "Category";
 
+//If there is no search query, then hide the "Results for..." header.
+if (searchQuery == "") {
+    const searchQueryHeader = document.querySelector(".search-query-header");
+    searchQueryHeader.style.visibility = "hidden";
+}
+
+//If there is no category searched, then hide the "In [category]" span.
+if (searchCategory == "Category") {
+    const searchCategorySpan = document.querySelector(".search-category-span");
+    searchCategorySpan.style.visibility = "hidden";
+}
+
 let searchbarInput = "";
 let searchbarCategory = "";
 
