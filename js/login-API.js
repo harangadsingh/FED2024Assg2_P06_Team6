@@ -19,7 +19,7 @@ try {
     const users = await response.json();
 
     const user = users.find((user) => {
-        return (user.email === emailOrUsername.value || user.username === emailOrUsername.value) && user.password === password.value;
+        return user.email === email.value && user.password === password.value;
     });
 
     if (user)
