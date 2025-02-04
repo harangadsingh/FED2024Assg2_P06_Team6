@@ -211,6 +211,9 @@ function createListingElements(listing) {
     createAppendElement("hr", "", textCol);
 
     listingNumber++;
+
+    createAppendElement("hr", "", container);
+    createAppendElement("p", "", container);
     return container;
 }
 
