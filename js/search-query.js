@@ -173,6 +173,21 @@ window.addEventListener("keydown", (e) => {
     }
 });
 
+const trashButton = document.querySelector("#trash-listing");
+trashButton.addEventListener("click", () => {
+    console.log("Trashed.");
+});
+const likeButton = document.querySelector("#like-listing");
+likeButton.addEventListener("click", () => {
+    console.log("Added to likes.");
+
+    if (currentListingIndex < createdListings.length - 1) {
+        createdListings[currentListingIndex].classList.add("d-none");
+        currentListingIndex++;
+        createdListings[currentListingIndex].classList.remove("d-none");
+    }
+});
+
 function createListingElements(listing) {
     const listingName = listing.name;
     const itemDesc = listing.itemDesc;
