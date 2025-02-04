@@ -264,3 +264,7 @@ function createImageCarousel(images) {
 
     return carouselContainer;
 }
+
+document.querySelector("#quality-bn").addEventListener("click", (e) => {
+    console.log(e.target.value);
+});
