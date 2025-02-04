@@ -122,16 +122,14 @@ function createLocalListings() {
 }
 
 window.addEventListener("keydown", (e) => {
-    if (e.code == "ArrowRight" || e.code == "ArrowLeft") {
+    if (e.code == "ArrowRight" && currentListingIndex < createdListings.length - 1) {
         createdListings[currentListingIndex].classList.add("d-none");
         currentListingIndex++;
         createdListings[currentListingIndex].classList.remove("d-none");
-
-        if (e.code == "ArrowRight") {
-            console.log("Added to likes.");
-        } else if (e.code == "ArrowLeft") {
-            console.log("Trashed.");
-        }
+    } else if (e.code == "ArrowLeft" && currentListingIndex > 0) {
+        createdListings[currentListingIndex].classList.add("d-none");
+        currentListingIndex--;
+        createdListings[currentListingIndex].classList.remove("d-none");
     }
 });
 
