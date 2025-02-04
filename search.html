@@ -22,9 +22,41 @@
             <div class="container-fluid p-0 border-bottom" id="breadcrumb">
                 <p class="m-0 ms-2 fs-5"><a href="index.html">Home</a> > Listings</p>
             </div>
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="m-0 mt-1">Quality</h3>
+                        <div>
+                            <div class="btn-group filters" role="group" aria-label="Basic checkbox toggle button group">
+                                <input type="checkbox" class="btn-check" id="quality-bn" autocomplete="off" value="quality-bn" />
+                                <label class="btn btn-outline-primary" for="quality-bn">Brand New</label>
+                                <input type="checkbox" class="btn-check" id="quality-ln" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="quality-ln">Like New</label>
+                                <input type="checkbox" class="btn-check" id="quality-u" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="quality-u">Used</label>
+                                <input type="checkbox" class="btn-check" id="quality-wu" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="quality-wu">Well Used</label>
+                                <input type="checkbox" class="btn-check" id="quality-b" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="quality-b">Broken</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h3 class="m-0 mt-1">Delivery</h3>
+                        <div>
+                            <div class="btn-group filters" role="group" aria-label="Basic checkbox toggle button group">
+                                <input type="checkbox" class="btn-check" id="delivery-s" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="delivery-s">Shipping</label>
+                                <input type="checkbox" class="btn-check" id="delivery-m" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="delivery-m">Meet-up</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container-fluid">
                 <h1 class="search-query-header">
-                    Results for: "<span id="search-query">SEARCH QUERY INPUT</span>"
+                    Results for: "<span id="search-query"></span>"
                     <span class="search-category-span">
                         in
                         <span id="search-category"></span>
