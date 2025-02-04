@@ -198,15 +198,15 @@ function createListingElements(listing) {
 
     //Create listing details
     const textCol = createAppendElement("div", "", row, ["col-7"]);
-    createAppendElement("h2", listingName, textCol);
+    createAppendElement("h2", listingName, textCol, ["fs-1"]);
     createAppendElement("p", itemDesc, textCol);
     createAppendElement("hr", "", textCol);
 
-    createAppendElement("h2", "Quality", textCol);
+    createAppendElement("h3", "Quality", textCol, ["fs-4"]);
     createAppendElement("p", qualityDesc, textCol);
     createAppendElement("hr", "", textCol);
 
-    createAppendElement("h2", "Delivery", textCol);
+    createAppendElement("h3", "Delivery", textCol, ["fs-4"]);
     createAppendElement("p", deliveryDesc, textCol);
     createAppendElement("hr", "", textCol);
 
