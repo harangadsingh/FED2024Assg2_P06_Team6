@@ -5,6 +5,8 @@ async function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
+    loadingMessage.style.display = "block";
+
     try {
         const response = await fetch(detailsUrl, {
             method: "GET",
@@ -32,6 +34,8 @@ async function login() {
     } catch (error) {
         console.error("Error: ", error);
         alert("An error occurred. Please try again.");
+    } finally {
+        loadingMessage.style.display = "none";
     }
 }
 
