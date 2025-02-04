@@ -11,9 +11,7 @@ const listingUrl = "https://mokesellfed-153b.restdb.io/rest/listing";
 //Get search query from searchbar
 const urlParams = new URLSearchParams(window.location.search);
 searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
-searchCategory = urlParams.get("category")
-    ? urlParams.get("category")
-    : "Category";
+searchCategory = urlParams.get("category") ? urlParams.get("category") : "Category";
 
 let searchbarInput = "";
 let searchbarCategory = "";
