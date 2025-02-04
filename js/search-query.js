@@ -3,6 +3,7 @@ let searchQuery = "";
 let searchCategory = "";
 let createdListings = [];
 let currentListingIndex = 0;
+let listingNumber = 0;
 
 //API
 const apiKey = "67960fb80acc0626570d3648";
@@ -177,23 +178,42 @@ function createListingElements(listing) {
     const itemDesc = listing.itemDesc;
     const qualityDesc = listing.qualityDesc;
     const deliveryDesc = listing.deliveryDesc;
+    const images = listing.images;
 
+    //Create listing container.
     const container = document.createElement("div");
-    container.classList.add("d-none");
+    container.classList.add("container", "me-5", "p-0", "d-none");
     listingsContainer.append(container);
+    const row = createAppendElement("div", "", container, ["row"]);
+
+    //Create images
+    const imageCol = createAppendElement("div", "", row, ["col-5"]);
+    if (images.length == 1) {
+        const img = createAppendElement("img", "", imageCol, ["img-fluid"]);
+        img.src = images[0];
+    } else {
+        const imageCarousel = createImageCarousel(images);
+        imageCol.append(imageCarousel);
+    }
 
     createAppendElement("h2", listingName, container);
     createAppendElement("p", itemDesc, container);
     createAppendElement("hr", "", container);
+    //Create listing details
+    const textCol = createAppendElement("div", "", row, ["col-7"]);
+    createAppendElement("h2", listingName, textCol);
+    createAppendElement("p", itemDesc, textCol);
+    createAppendElement("hr", "", textCol);
 
-    createAppendElement("h2", "Quality", container);
-    createAppendElement("p", qualityDesc, container);
-    createAppendElement("hr", "", container);
+    createAppendElement("h2", "Quality", textCol);
+    createAppendElement("p", qualityDesc, textCol);
+    createAppendElement("hr", "", textCol);
 
-    createAppendElement("h2", "Delivery", container);
-    createAppendElement("p", deliveryDesc, container);
-    createAppendElement("hr", "", container);
+    createAppendElement("h2", "Delivery", textCol);
+    createAppendElement("p", deliveryDesc, textCol);
+    createAppendElement("hr", "", textCol);
 
+    listingNumber++;
     return container;
 }
 
@@ -203,4 +223,29 @@ function createAppendElement(elementType, text, parent = "", classes = "") {
     classes != "" && element.classList.add(...classes); //If there is a class, add it
     parent != "" && parent.append(element); //If there is a parent, append the element to it
     return element;
+}
+
+function createImageCarousel(images) {
+    const carouselContainer = createAppendElement("div", "", "", ["carousel", "slide"]);
+    carouselContainer.id = `carousel${listingNumber}`;
+    const carouselInnerContainer = createAppendElement("div", "", carouselContainer, ["carousel-inner"]);
+
+    for (let i = 0; i < images.length; i++) {
+        const carouselItem = createAppendElement("div", "", carouselInnerContainer, ["carousel-item"]);
+        const imgElement = createAppendElement("img", "", carouselItem, ["d-block", "w-100"]);
+        imgElement.src = images[i];
+
+        i == 0 && carouselItem.classList.add("active");
+    }
+    carouselContainer.innerHTML += `
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel${listingNumber}" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel${listingNumber}" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>`;
+
+    return carouselContainer;
 }
