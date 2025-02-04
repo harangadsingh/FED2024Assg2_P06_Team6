@@ -1,0 +1,232 @@
+[
+    {
+        "_id": "67a235b8f63b80480010490b",
+        "price": 500,
+        "name": "Cracked Motorola Razr+ 2024 ",
+        "_created": "2025-02-04T15:43:52.716Z",
+        "_changed": "2025-02-04T18:54:10.089Z",
+        "_createdby": "s10267942@connect.np.edu.sg",
+        "_changedby": "restdb.scorer297@passinbox.com",
+        "_version": 2,
+        "description": "screen is cracked, will come with phone case and usb charger",
+        "subCategory": [
+            {
+                "_id": "6784b07df63b8048000d5d76",
+                "category": ["6784a5b7f63b8048000d5c8e"],
+                "sub-category": "Mobile Phones",
+                "_created": "2025-01-13T06:19:41.761Z",
+                "_changed": "2025-01-13T06:19:41.761Z"
+            }
+        ],
+        "delivery": "Shipping only",
+        "likes": 0,
+        "quality": [
+            {
+                "_id": "67a25be4f63b804800104bb6",
+                "quality": "Well used",
+                "_created": "2025-02-04T18:26:44.193Z",
+                "_changed": "2025-02-04T18:27:58.136Z"
+            }
+        ],
+        "seller": [
+            {
+                "_id": "67a2604cf63b804800104c44",
+                "password": "Sunburst@2023",
+                "username": "SolarFlareX",
+                "following": [],
+                "listings": [],
+                "seller-rating": 0,
+                "likes": [],
+                "buyer-rating": 0,
+                "email": "solar.flarex@example.org",
+                "profile-picture": "https://images.unsplash.com/photo-1735748917573-78c3387fc8ec?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "_created": "2025-02-04T18:45:31.990Z",
+                "_changed": "2025-02-04T18:51:05.266Z"
+            }
+        ]
+    },
+    {
+        "_id": "67a237caf63b80480010494a",
+        "price": 199,
+        "name": "PlayStation Portal",
+        "_created": "2025-02-04T15:52:42.587Z",
+        "_changed": "2025-02-04T18:55:09.004Z",
+        "_createdby": "s10267942@connect.np.edu.sg",
+        "_changedby": "restdb.scorer297@passinbox.com",
+        "_version": 2,
+        "description": "WON FROM LUCKY DRAW, ONLY TAKE OUT TO TRY",
+        "subCategory": [
+            {
+                "_id": "6784b09ff63b8048000d5d7f",
+                "category": ["6784a5b7f63b8048000d5c8e"],
+                "sub-category": "Gaming Consoles",
+                "_created": "2025-01-13T06:20:15.632Z",
+                "_changed": "2025-01-13T06:20:15.632Z"
+            }
+        ],
+        "delivery": "SHIPPING ONLY",
+        "likes": 0,
+        "quality": [
+            {
+                "_id": "67a25bb7f63b804800104baa",
+                "quality": "Brand new",
+                "_created": "2025-02-04T18:25:59.583Z",
+                "_changed": "2025-02-04T18:27:47.795Z"
+            }
+        ],
+        "seller": [
+            {
+                "_id": "67a2603df63b804800104c42",
+                "password": "Sky#1234",
+                "username": "CrimsonFalcon",
+                "following": [],
+                "listings": [],
+                "seller-rating": 0,
+                "likes": [],
+                "buyer-rating": 0,
+                "email": "crimson.falcon@demo.net",
+                "profile-picture": "https://images.unsplash.com/photo-1725366351350-a64a1be919ef?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDQ4fDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D",
+                "_created": "2025-02-04T18:45:17.894Z",
+                "_changed": "2025-02-04T18:50:51.692Z"
+            }
+        ]
+    },
+    {
+        "_id": "67a2376cf63b804800104940",
+        "price": 50,
+        "name": "Nintendo Switch OLED",
+        "_created": "2025-02-04T15:51:08.939Z",
+        "_changed": "2025-02-04T18:57:27.384Z",
+        "_createdby": "s10267942@connect.np.edu.sg",
+        "_changedby": "restdb.scorer297@passinbox.com",
+        "_version": 1,
+        "description": "doesn't turn on anymore",
+        "subCategory": [
+            {
+                "_id": "6784b09ff63b8048000d5d7f",
+                "category": ["6784a5b7f63b8048000d5c8e"],
+                "sub-category": "Gaming Consoles",
+                "_created": "2025-01-13T06:20:15.632Z",
+                "_changed": "2025-01-13T06:20:15.632Z"
+            }
+        ],
+        "delivery": "MEET UP BEDOK",
+        "quality": [
+            {
+                "_id": "67a25bebf63b804800104bb8",
+                "quality": "Broken",
+                "_created": "2025-02-04T18:26:51.335Z",
+                "_changed": "2025-02-04T18:28:04.103Z"
+            }
+        ],
+        "seller": [
+            {
+                "_id": "67a2602df63b804800104c40",
+                "password": "Wings!2023",
+                "username": "GoldenGriffin",
+                "following": [],
+                "listings": [],
+                "seller-rating": 0,
+                "likes": [],
+                "buyer-rating": 0,
+                "email": "golden.griffin@mockmail.org",
+                "profile-picture": "https://plus.unsplash.com/premium_photo-1689902335785-b187c1c324f9?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "_created": "2025-02-04T18:45:01.848Z",
+                "_changed": "2025-02-04T18:50:34.939Z"
+            }
+        ],
+        "likes": []
+    },
+    {
+        "_id": "67a234fef63b8048001048f4",
+        "price": 1000,
+        "name": "Samsung Galaxy S24 Ultra used",
+        "_created": "2025-02-04T15:40:46.704Z",
+        "_changed": "2025-02-04T18:57:40.712Z",
+        "_createdby": "s10267942@connect.np.edu.sg",
+        "_changedby": "restdb.scorer297@passinbox.com",
+        "_version": 3,
+        "description": "High-performance Android phone with a 200MP camera and S Pen support.",
+        "subCategory": [
+            {
+                "_id": "6784b07df63b8048000d5d76",
+                "category": ["6784a5b7f63b8048000d5c8e"],
+                "sub-category": "Mobile Phones",
+                "_created": "2025-01-13T06:19:41.761Z",
+                "_changed": "2025-01-13T06:19:41.761Z"
+            }
+        ],
+        "delivery": "no meet up, will ship",
+        "likes": [],
+        "quality": [
+            {
+                "_id": "67a25bc0f63b804800104baf",
+                "quality": "Like new",
+                "_created": "2025-02-04T18:26:08.794Z",
+                "_changed": "2025-02-04T18:27:41.345Z"
+            }
+        ],
+        "seller": [
+            {
+                "_id": "67a25e34f63b804800104bfa",
+                "password": "Code$7890",
+                "username": "CrimsonCoder",
+                "following": [],
+                "listings": [],
+                "seller-rating": 0,
+                "likes": [],
+                "buyer-rating": 0,
+                "profile-picture": "https://plus.unsplash.com/premium_vector-1730375339996-7f2d9e964a5f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxpbGx1c3RyYXRpb25zLWZlZWR8NTF8fHxlbnwwfHx8fHw%3D",
+                "_created": "2025-02-04T18:36:36.929Z",
+                "_changed": "2025-02-04T18:49:02.286Z",
+                "email": "crimson.coder@example.com"
+            }
+        ]
+    },
+    {
+        "_id": "67a234daf63b8048001048f2",
+        "price": 999,
+        "name": "iPhone 15 Pro ",
+        "_created": "2025-02-04T15:40:10.192Z",
+        "_changed": "2025-02-04T18:57:53.531Z",
+        "_createdby": "s10267942@connect.np.edu.sg",
+        "_changedby": "restdb.scorer297@passinbox.com",
+        "_version": 3,
+        "description": "Apple's latest flagship with A17 Bionic chip, 6.1-inch OLED display, and titanium frame.",
+        "subCategory": [
+            {
+                "_id": "6784b07df63b8048000d5d76",
+                "category": ["6784a5b7f63b8048000d5c8e"],
+                "sub-category": "Mobile Phones",
+                "_created": "2025-01-13T06:19:41.761Z",
+                "_changed": "2025-01-13T06:19:41.761Z"
+            }
+        ],
+        "delivery": "Meet up at Clementi, 2-5pm weekdays, 12-8pm weekends",
+        "likes": [],
+        "quality": [
+            {
+                "_id": "67a25bb7f63b804800104baa",
+                "quality": "Brand new",
+                "_created": "2025-02-04T18:25:59.583Z",
+                "_changed": "2025-02-04T18:27:47.795Z"
+            }
+        ],
+        "seller": [
+            {
+                "_id": "67a25fa7f63b804800104c29",
+                "password": "Fire$2023",
+                "username": "BlazeRunner11",
+                "following": [],
+                "listings": [],
+                "seller-rating": 0,
+                "likes": [],
+                "buyer-rating": 0,
+                "email": "blaze.runner11@mockmail.com",
+                "profile-picture": "https://plus.unsplash.com/premium_vector-1738085268287-0c11bc68fe3a?q=80&w=3600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "_created": "2025-02-04T18:42:47.600Z",
+                "_changed": "2025-02-04T18:47:39.900Z"
+            }
+        ]
+    }
+]
