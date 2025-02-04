@@ -5,10 +5,9 @@ let createdListings = [];
 let currentListingIndex = 0;
 let listingNumber = 0;
 
-//API
-const apiKey = "67960fb80acc0626570d3648";
-const listingUrl = "https://mokesellfed-153b.restdb.io/rest/listing";
-
+// ======================
+// FETCHING SEARCH QUERY
+// ======================
 //Get search query from searchbar
 const urlParams = new URLSearchParams(window.location.search);
 searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
@@ -45,149 +44,10 @@ searchQuerySpan.innerText = searchQuery;
 const searchCategorySpan = document.querySelector("#search-category");
 searchCategorySpan.innerText = searchCategory;
 
+// ======================
+// CREATING THE LISTING ELEMENTS
+// ======================
 const listingsContainer = document.querySelector(".listing");
-
-// Fetch Listings
-//THIS IS WORKING, BUT IT'S COMMENTED OUT TO PREVENT HITTING THE 500 DAILY CALLS RESTDB HAS.
-//LOOK BELOW FOR LOCAL CODE CREATING LISTINGS.
-// fetch(listingUrl, {
-//     headers: {
-//         "x-apikey": apiKey,
-//     },
-// })
-//     .then((res) => {
-//         console.log("API call is successful.");
-//         return res.json();
-//     })
-//     .then((data) => {
-//         console.log("Retrieved data from API.");
-//         console.log(data);
-//         const filteredData = [];
-//         for (const element of data) {
-//             console.log(searchQuery);
-//             if (element.name.includes(searchQuery)) {
-//                 filteredData.push(element);
-//             }
-//         }
-//         return filteredData;
-//     })
-//     .then((filteredData) => {
-//         console.log(`Filtered data for query: "${searchQuery}"`);
-//         console.log(filteredData);
-//         for (let i = 0; i < filteredData.length; i++) {
-//             listing = filteredData[i];
-
-//             let newListing = createListingElements(listing);
-//             createdListings.push(newListing);
-//         }
-
-//         createdListings[0].classList.remove("d-none"); //Unhide the first listing created
-//     })
-//     .catch((e) => {
-//         console.log(e);
-//     });
-
-//LOCAL LISTINGS CODE
-createLocalListings();
-function createLocalListings() {
-    const listings = [
-        {
-            name: "Test1",
-            itemDesc: "Banana",
-            qualityDesc: "Brand New",
-            deliveryDesc: "Clementi MRT\nWeekdays: 2pm - 5pm",
-            images: [
-                "https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?q=80&w=3272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww",
-                "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww",
-            ],
-        },
-        {
-            name: "Test2",
-            itemDesc: "Apple",
-            qualityDesc: "Used - Good Condition",
-            deliveryDesc: "Jurong East MRT\nWeekends: 10am - 1pm",
-            images: [
-                "https://plus.unsplash.com/premium_photo-1690440686714-c06a56a1511c?q=80&w=3328&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SWNlJTIwY3JlYW18ZW58MHx8MHx8fDA%3D",
-                "https://images.unsplash.com/photo-1560008581-09826d1de69e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8SWNlJTIwY3JlYW18ZW58MHx8MHx8fDA%3D",
-            ],
-        },
-        {
-            name: "Test3",
-            itemDesc: "Orange",
-            qualityDesc: "Brand New",
-            deliveryDesc: "Orchard MRT\nWeekdays: 6pm - 8pm",
-            images: [
-                "https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?q=80&w=3272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww",
-                "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww",
-            ],
-        },
-        {
-            name: "Test4",
-            itemDesc: "Grapes",
-            qualityDesc: "Used - Like New",
-            deliveryDesc: "Bishan MRT\nWeekends: 2pm - 5pm",
-            images: [
-                "https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?q=80&w=3272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww",
-                "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww",
-            ],
-        },
-        {
-            name: "Test5",
-            itemDesc: "Mango",
-            qualityDesc: "Brand New",
-            deliveryDesc: "Dhoby Ghaut MRT\nWeekdays: 1pm - 4pm",
-            images: [
-                "https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?q=80&w=3272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww",
-                "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww",
-            ],
-        },
-    ];
-
-    for (let i = 0; i < listings.length; i++) {
-        let listing = listings[i];
-
-        if (listing.name.includes(searchQuery)) {
-            let newListing = createListingElements(listing);
-            createdListings.push(newListing);
-        }
-    }
-    createdListings[0].classList.remove("d-none"); //Unhide the first listing created
-}
-
-window.addEventListener("keydown", (e) => {
-    if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListings.length - 1) {
-        createdListings[currentListingIndex].classList.add("d-none");
-        currentListingIndex++;
-        createdListings[currentListingIndex].classList.remove("d-none");
-
-        if (e.code == "ArrowRight") {
-            console.log("Added to likes.");
-        } else if (e.code == "ArrowLeft") {
-            console.log("Trashed.");
-        }
-    }
-});
-
-const trashButton = document.querySelector("#trash-listing");
-trashButton.addEventListener("click", () => {
-    console.log("Trashed.");
-});
-const likeButton = document.querySelector("#like-listing");
-likeButton.addEventListener("click", () => {
-    console.log("Added to likes.");
-
-    if (currentListingIndex < createdListings.length - 1) {
-        createdListings[currentListingIndex].classList.add("d-none");
-        currentListingIndex++;
-        createdListings[currentListingIndex].classList.remove("d-none");
-    }
-});
-
 function createListingElements(listing) {
     const listingName = listing.name;
     const itemDesc = listing.itemDesc;
@@ -264,6 +124,113 @@ function createImageCarousel(images) {
 
     return carouselContainer;
 }
+
+// ======================
+// FETCHING API DATA
+// ======================
+//API
+const apiKey = "67960fb80acc0626570d3648";
+const listingUrl = "https://mokesellfed-153b.restdb.io/rest/listing";
+
+// Fetch Listings
+//THIS IS WORKING, BUT IT'S COMMENTED OUT TO PREVENT HITTING THE 500 DAILY CALLS RESTDB HAS.
+//LOOK BELOW FOR LOCAL CODE CREATING LISTINGS.
+function callAPIListings() {
+    fetch(listingUrl, {
+        headers: {
+            "x-apikey": apiKey,
+        },
+    })
+        .then((res) => {
+            console.log("API call is successful.");
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+            const filteredData = [];
+            for (const element of data) {
+                console.log(searchQuery);
+                if (element.name.includes(searchQuery)) {
+                    filteredData.push(element);
+                }
+            }
+            return filteredData;
+        })
+        .then((filteredData) => {
+            console.log(`Filtered data for query: "${searchQuery}"`);
+            console.log(filteredData);
+            createListings(filteredData);
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+}
+
+//FETCH LOCAL JSON
+fetch("json/listings.json")
+    .then((res) => {
+        console.log("Local JSON file read successfully.");
+        return res.json();
+    })
+    .then((data) => {
+        console.log(data);
+        const filteredData = [];
+        for (const element of data) {
+            if (element.name.includes(searchQuery)) {
+                filteredData.push(element);
+            }
+        }
+        return filteredData;
+    })
+    .then((filteredData) => {
+        console.log(`Filtered data for query: "${searchQuery}"`);
+        console.log(filteredData);
+        createListings(filteredData);
+    })
+    .catch((error) => {
+        console.error("Error reading JSON file:", error);
+    });
+
+function createListings(filteredData) {
+    for (const listing of filteredData) {
+        const newListing = createListingElements(listing);
+        createdListings.push(newListing);
+    }
+
+    createdListings[0].classList.remove("d-none"); //Unhide the first listing created
+}
+
+// ======================
+// LISTENERS
+// ======================
+window.addEventListener("keydown", (e) => {
+    if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListings.length - 1) {
+        createdListings[currentListingIndex].classList.add("d-none");
+        currentListingIndex++;
+        createdListings[currentListingIndex].classList.remove("d-none");
+
+        if (e.code == "ArrowRight") {
+            console.log("Added to likes.");
+        } else if (e.code == "ArrowLeft") {
+            console.log("Trashed.");
+        }
+    }
+});
+
+const trashButton = document.querySelector("#trash-listing");
+trashButton.addEventListener("click", () => {
+    console.log("Trashed.");
+});
+const likeButton = document.querySelector("#like-listing");
+likeButton.addEventListener("click", () => {
+    console.log("Added to likes.");
+
+    if (currentListingIndex < createdListings.length - 1) {
+        createdListings[currentListingIndex].classList.add("d-none");
+        currentListingIndex++;
+        createdListings[currentListingIndex].classList.remove("d-none");
+    }
+});
 
 document.querySelector("#quality-bn").addEventListener("click", (e) => {
     console.log(e.target.value);
