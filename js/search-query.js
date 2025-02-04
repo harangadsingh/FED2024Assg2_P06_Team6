@@ -134,7 +134,7 @@ function createLocalListings() {
 }
 
 window.addEventListener("keydown", (e) => {
-    if (e.code == "ArrowRight" || e.code == "ArrowLeft") {
+    if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListings.length - 1) {
         createdListings[currentListingIndex].classList.add("d-none");
         currentListingIndex++;
         createdListings[currentListingIndex].classList.remove("d-none");
