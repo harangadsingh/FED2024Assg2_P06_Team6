@@ -196,9 +196,6 @@ function createListingElements(listing) {
         imageCol.append(imageCarousel);
     }
 
-    createAppendElement("h2", listingName, container);
-    createAppendElement("p", itemDesc, container);
-    createAppendElement("hr", "", container);
     //Create listing details
     const textCol = createAppendElement("div", "", row, ["col-7"]);
     createAppendElement("h2", listingName, textCol);
