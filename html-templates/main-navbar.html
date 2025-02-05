@@ -57,30 +57,22 @@
                     </div>
                 </form>
                 <ul class="navbar-nav ms-2">
-                    <!-- Wishlist -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#wishlist" id="navbar-heart-icon-offset"
-                            ><img class="navbar-img" src="/images/icons/bootstrap/heart-fill.svg" alt="" /><span class="d-sm-none ms-2 fs-1"
-                                >Wishlist</span
-                            ></a
-                        >
-                    </li>
-                    <!-- Notifications -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#notif"
-                            ><img class="navbar-img" src="/images/icons/bootstrap/bell.svg" alt="" /><span class="d-sm-none ms-2 fs-1"
-                                >Notifications</span
-                            ></a
-                        >
-                    </li>
                     <!-- Account -->
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown d-none d-sm-block">
                         <button class="btn dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="/images/icons/bootstrap/person-circle.svg" alt="Register/Log in" class="navbar-img" />
                         </button>
                         <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end">
                             <li><a class="dropdown-item" href="/signup-page.html">Register</a></li>
                             <li><a class="dropdown-item" href="/login-page.html">Log in</a></li>
+                            <hr class="d-none require-account" />
+                            <!-- I don't know why, but putting dropdown-item class on these things break them -->
+                            <li class="d-none require-account">
+                                <a class="dropdown-item" href="#Notifs">Notifications <span class="badge text-bg-danger">5</span></a>
+                            </li>
+                            <li class="d-none require-account">
+                                <a class="dropdown-item" href="#Likes">Likes <span class="badge text-bg-success">5</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
