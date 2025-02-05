@@ -43,6 +43,10 @@ MAIN NAVIGATION BAR
     filter: invert(29%) sepia(52%) saturate(747%) hue-rotate(216deg) brightness(95%) contrast(92%);
 }
 
+.navbar-toggler-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
 /* The icon looks too tall when beside the other icons */
 #navbar-heart-icon-offset {
     padding-top: 10px;
