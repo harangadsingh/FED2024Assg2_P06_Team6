@@ -7,11 +7,15 @@ main {
     color: white;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
 /* //////////////////
 MAIN NAVIGATION BAR
 ////////////////// */
 .navbar-brand {
-    text-decoration: none;
     color: black;
     font-size: 2rem;
     font-weight: 200;
@@ -111,4 +115,42 @@ ACCOUNT PAGE
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* //////////////////
+INDEX PAGE
+////////////////// */
+.header {
+    width: 100%;
+    height: 60vh;
+    background-image: url("https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h1 {
+    color: black;
+    font-size: 10rem;
+    text-align: center;
+}
+
+@media (max-width: 1080px) {
+    .header h1 {
+        font-size: 7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 5rem;
+    }
+}
+
+.category-img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
 }
