@@ -150,7 +150,7 @@ function createListingElements(listing) {
 
     //Create listing container.
     const container = document.createElement("div");
-    container.classList.add("container", "me-5", "p-0", "d-none");
+    container.classList.add("container", "p-0", "d-none");
     listingsContainer.append(container);
     const row = createAppendElement("div", "", container, ["row"]);
 
