@@ -88,7 +88,7 @@ function sortListings(data) {
     }
     filteredData = dataSortedByQuery;
 
-    if (searchQuery != "Category") {
+    if (searchCategory != "Category") {
         const dataSortedByCategory = [];
         for (const element of dataSortedByQuery) {
             //I am too tired to care about this abomination. If it works, it works.
