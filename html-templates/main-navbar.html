@@ -66,16 +66,14 @@
                         >
                     </li>
                     <!-- Account -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#account"
-                            ><img
-                                class="navbar-img"
-                                src="images/icons/bootstrap/person-circle.svg"
-                                alt=""
-                            /><span class="d-sm-none ms-2 fs-1"
-                                >Account</span
-                            ></a
-                        >
+                    <li class="nav-item dropdown">
+                        <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/images/icons/bootstrap/person-circle.svg" alt="Register/Log in" class="navbar-img" />
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/signup-page.html">Register</a></li>
+                            <li><a class="dropdown-item" href="/login-page.html">Log in</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
