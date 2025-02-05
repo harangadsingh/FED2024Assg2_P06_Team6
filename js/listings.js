@@ -57,7 +57,7 @@ const onlineListings = {
     method: "GET",
     headers: {
         "content-type": "application/json",
-        "x-apikey": "<your CORS apikey here>",
+        "x-apikey": "67960fb80acc0626570d3648",
         "cache-control": "no-cache",
     },
 };
