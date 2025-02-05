@@ -1,10 +1,12 @@
 body {
     font-family: "Smooch Sans", sans-serif;
     background-color: #2d2d2d;
+    color: white;
 }
 
-main {
-    color: white;
+main,
+.violet {
+    color: #7764d8;
 }
 
 a {
@@ -16,13 +18,9 @@ a {
 MAIN NAVIGATION BAR
 ////////////////// */
 .navbar-brand {
-    color: black;
+    color: white;
     font-size: 2rem;
     font-weight: 200;
-}
-
-.navbar-brand span {
-    color: purple;
 }
 
 .inline-icon {
@@ -33,6 +31,7 @@ MAIN NAVIGATION BAR
 .navbar-img {
     width: 2rem;
     height: 2rem;
+    filter: invert(29%) sepia(52%) saturate(747%) hue-rotate(216deg) brightness(95%) contrast(92%);
 }
 
 /* The icon looks too tall when beside the other icons */
@@ -82,6 +81,7 @@ SEARCH PAGE
 
 #breadcrumb a {
     color: white;
+    text-decoration: underline;
 }
 
 .listing-control-icon img {
@@ -130,9 +130,11 @@ INDEX PAGE
 }
 
 .header h1 {
+    background-color: #7764d8;
     color: black;
     font-size: 10rem;
     text-align: center;
+    opacity: 0.8;
 }
 
 @media (max-width: 1080px) {
