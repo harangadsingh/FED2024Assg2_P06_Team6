@@ -1,15 +1,15 @@
 <!-- Main navigation bar -->
-<header class="sticky-top">
-    <nav class="navbar navbar-expand-sm bg-body-tertiary">
+<header class="sticky-top violet">
+    <nav class="navbar navbar-expand-sm">
         <div class="container-fluid">
             <!-- Logo -->
-            <a class="navbar-brand" href="index.html"
-                >Moke<span><b>S</b></span
+            <a class="navbar-brand" href="/index.html"
+                >Moke<span class="violet"><b>S</b></span
                 >ell</a
             >
             <!-- Burger button on collapse -->
             <button
-                class="navbar-toggler"
+                class="navbar-toggler border-white"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarToggler"
@@ -21,20 +21,11 @@
             </button>
             <!-- Collapse into burger on small devices -->
             <div class="collapse navbar-collapse" id="navbarToggler">
-                <form
-                    class="d-flex w-100"
-                    role="search"
-                    action="search.html"
-                    method="GET"
-                >
+                <form class="d-flex w-100" role="search" action="/browse-listings-page.html" method="GET">
                     <div class="input-group">
                         <!-- Inline search icon -->
                         <span class="input-group-text"
-                            ><img
-                                id="inline-icon"
-                                class="inline-icon"
-                                src=" images/icons/bootstrap/search.svg"
-                                alt=""
+                            ><img id="inline-icon" class="inline-icon" src="/images/icons/bootstrap/search.svg" alt=""
                         /></span>
                         <!-- Searchbar -->
                         <input
@@ -47,35 +38,29 @@
                         />
                         <!-- Select Category dropdown -->
                         <span class="input-group-text p-0 dropdown">
-                            <select
-                                id="searchbar-category"
-                                class="form-select border-0"
-                                aria-label="Default select example"
-                                name="category"
-                            >
-                                <option selected>Category</option>
-                                <option value="electronics">Electronics</option>
-                                <option value="apparel">Apparel</option>
+                            <select id="searchbar-category" class="form-select border-0" aria-label="Default select example" name="category">
+                                <option value="Category" selected>Category</option>
+                                <hr />
+                                <option value="Electronics">Electronics</option>
+                                <option value="Mobile Phones">Mobile Phones</option>
+                                <option value="Game Consoles">Game Consoles</option>
+                                <option value="Laptops">Laptops</option>
+                                <hr />
+                                <option value="Apparel">Apparel</option>
+                                <option value="Jackets">Jackets</option>
+                                <option value="T-Shirts">T-Shirts</option>
+                                <option value="Pants">Pants</option>
                             </select>
                         </span>
                         <!-- Submit button -->
-                        <button class="btn btn-outline-success" type="submit">
-                            Search
-                        </button>
+                        <button class="btn btn-outline-success" type="submit">Search</button>
                     </div>
                 </form>
                 <ul class="navbar-nav ms-2">
                     <!-- Wishlist -->
                     <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            href="#wishlist"
-                            id="navbar-heart-icon-offset"
-                            ><img
-                                class="navbar-img"
-                                src="images/icons/bootstrap/heart-fill.svg"
-                                alt=""
-                            /><span class="d-sm-none ms-2 fs-1"
+                        <a class="nav-link" href="#wishlist" id="navbar-heart-icon-offset"
+                            ><img class="navbar-img" src="/images/icons/bootstrap/heart-fill.svg" alt="" /><span class="d-sm-none ms-2 fs-1"
                                 >Wishlist</span
                             ></a
                         >
@@ -83,26 +68,20 @@
                     <!-- Notifications -->
                     <li class="nav-item">
                         <a class="nav-link" href="#notif"
-                            ><img
-                                class="navbar-img"
-                                src="images/icons/bootstrap/bell.svg"
-                                alt=""
-                            /><span class="d-sm-none ms-2 fs-1"
+                            ><img class="navbar-img" src="/images/icons/bootstrap/bell.svg" alt="" /><span class="d-sm-none ms-2 fs-1"
                                 >Notifications</span
                             ></a
                         >
                     </li>
                     <!-- Account -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#account"
-                            ><img
-                                class="navbar-img"
-                                src="images/icons/bootstrap/person-circle.svg"
-                                alt=""
-                            /><span class="d-sm-none ms-2 fs-1"
-                                >Account</span
-                            ></a
-                        >
+                    <li class="nav-item dropdown">
+                        <button class="btn dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/images/icons/bootstrap/person-circle.svg" alt="Register/Log in" class="navbar-img" />
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/signup-page.html">Register</a></li>
+                            <li><a class="dropdown-item" href="/login-page.html">Log in</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

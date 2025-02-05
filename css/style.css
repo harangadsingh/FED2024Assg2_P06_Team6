@@ -1,24 +1,35 @@
 body {
     font-family: "Smooch Sans", sans-serif;
     background-color: #2d2d2d;
+    color: white;
 }
 
-main {
+main,
+.violet {
+    color: #7764d8;
+}
+
+a {
     color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* //////////////////
 MAIN NAVIGATION BAR
 ////////////////// */
 .navbar-brand {
-    text-decoration: none;
-    color: black;
+    color: white;
     font-size: 2rem;
     font-weight: 200;
 }
 
-.navbar-brand span {
-    color: purple;
+.navbar-brand:hover {
+    color: white;
+    text-decoration: underline;
 }
 
 .inline-icon {
@@ -29,6 +40,11 @@ MAIN NAVIGATION BAR
 .navbar-img {
     width: 2rem;
     height: 2rem;
+    filter: invert(29%) sepia(52%) saturate(747%) hue-rotate(216deg) brightness(95%) contrast(92%);
+}
+
+.navbar-toggler-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
 /* The icon looks too tall when beside the other icons */
@@ -59,30 +75,26 @@ DESKTOP CHECKOUT FOOTER
 /* //////////////////
 SEARCH PAGE
 ////////////////// */
-.carousel img {
+.listing-img {
     width: 100%;
     height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
 }
-
-.listing {
-    background-color: green;
-}
-
-#filters {
-    background-color: purple;
-}
-
 
 .account-profile-picture {
-    height: 100px;
+    margin-right: 10px;
+    padding: 0;
     width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 50%;
-    display: inline;
 }
 
 #breadcrumb a {
     color: white;
+    text-decoration: underline;
 }
 
 .listing-control-icon img {
@@ -95,10 +107,10 @@ SEARCH PAGE
 LOGIN PAGE
 ////////////////// */
 .full-height {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 /* //////////////////
 ////////////////// */
@@ -107,15 +119,53 @@ LOGIN PAGE
 ACCOUNT PAGE
 ////////////////// */
 .account-body {
-  background-color: #f8f9fa;
+    background-color: #f8f9fa;
 }
 .account-container {
-  max-width: 800px;
-  margin: 40px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* //////////////////
+INDEX PAGE
+////////////////// */
+.header {
+    width: 100%;
+    height: 60vh;
+    background-image: url("https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.header h1 {
+    background-color: #7764d8;
+    color: black;
+    font-size: 10rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+@media (max-width: 1080px) {
+    .header h1 {
+        font-size: 7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 5rem;
+    }
+}
+
+.category-img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+}
