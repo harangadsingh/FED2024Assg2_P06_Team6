@@ -166,7 +166,7 @@ function createListingElements(listing) {
     }
 
     //Create listing details
-    const textCol = createAppendElement("div", "", row, ["col", "ms-1"]);
+    const textCol = createAppendElement("div", "", row, ["col", "ms-1", "listing-text-start"]);
 
     //Title
     createAppendElement("h2", listingName, textCol, ["fs-1", "m-0"]);
