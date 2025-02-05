@@ -4,6 +4,7 @@ let searchCategory = "";
 let createdListings = [];
 let currentListingIndex = 0;
 let listingNumber = 0;
+let qualityFilter = [];
 
 // #region  SEARCH QUERY
 //Get search query from searchbar
@@ -193,7 +194,7 @@ function createImageCarousel(images) {
 // #endregion
 
 // #region  LISTENERS
-// ======================
+//Listing controls
 window.addEventListener("keydown", (e) => {
     if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListings.length - 1) {
         createdListings[currentListingIndex].classList.add("d-none");
@@ -208,6 +209,7 @@ window.addEventListener("keydown", (e) => {
     }
 });
 
+//Listing buttons
 const trashButton = document.querySelector("#trash-listing");
 trashButton.addEventListener("click", () => {
     console.log("Trashed.");
@@ -223,7 +225,25 @@ likeButton.addEventListener("click", () => {
     }
 });
 
-document.querySelector("#quality-bn").addEventListener("click", (e) => {
-    console.log(e.target.value);
+const filterOptions = document.querySelectorAll(".filter");
+const applyFilterButton = document.querySelector("#apply-filters");
+
+applyFilterButton.addEventListener("click", (e) => {
+    e.preventDefault();
 });
+
+for (const option of filterOptions) {
+    option.addEventListener("click", (e) => {
+        applyFilterButton.classList.add("btn-primary");
+        applyFilterButton.classList.remove("btn-secondary");
+
+        if (e.target.checked) {
+            qualityFilter.push(e.target.value);
+            console.log(qualityFilter);
+        } else {
+            qualityFilter = qualityFilter.filter((quality) => quality != e.target.value);
+            console.log(qualityFilter);
+        }
+    });
+}
 // #endregion
