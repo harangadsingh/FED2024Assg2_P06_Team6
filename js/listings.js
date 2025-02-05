@@ -148,6 +148,7 @@ function createListingElements(listing) {
     const imageArray = listing.images.split("\n");
     const sellerProfilePictureImg = listing.seller[0]["profile-picture"];
     const sellerUsername = listing.seller[0].username;
+    const likes = listing.likes.length;
 
     //Create listing container.
     const container = document.createElement("div");
@@ -170,6 +171,8 @@ function createListingElements(listing) {
 
     //Title
     createAppendElement("h2", listingName, textCol, ["fs-1", "m-0"]);
+    const title = createAppendElement("h2", listingName, textCol, ["fs-1", "m-0"]);
+    createAppendElement("span", likes, title, ["badge", "text-bg-danger", "ms-2"]);
 
     //Category
     createAppendElement("h4", "Electronics, Mobile Phone", textCol, ["fs-6"]);
