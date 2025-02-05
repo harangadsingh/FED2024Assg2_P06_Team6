@@ -141,6 +141,7 @@ fetchListings(localListings);
 const listingsContainer = document.querySelector(".listing");
 function createListingElements(listing) {
     const listingName = listing.name;
+    const itemPrice = listing.price;
     const itemDesc = listing.description;
     const qualityDesc = listing.quality[0].quality;
     const deliveryDesc = listing.delivery;
@@ -172,6 +173,9 @@ function createListingElements(listing) {
 
     //Category
     createAppendElement("h4", "Electronics, Mobile Phone", textCol, ["fs-6"]);
+
+    //Price
+    createAppendElement("h3", `$${itemPrice}`, textCol, ["fs-4"]);
 
     //Description
     createAppendElement("p", itemDesc, textCol);
