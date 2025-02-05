@@ -5,9 +5,7 @@ let createdListings = [];
 let currentListingIndex = 0;
 let listingNumber = 0;
 
-// ======================
-// FETCHING SEARCH QUERY
-// ======================
+// #region  SEARCH QUERY
 //Get search query from searchbar
 const urlParams = new URLSearchParams(window.location.search);
 searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
@@ -43,17 +41,66 @@ const searchQuerySpan = document.querySelector("#search-query");
 searchQuerySpan.innerText = searchQuery;
 const searchCategorySpan = document.querySelector("#search-category");
 searchCategorySpan.innerText = searchCategory;
+// #endregion
 
-// ======================
-// CREATING THE LISTING ELEMENTS
-// ======================
+// #region  FETCHING API
+const localListings = "json/listings.json";
+const onlineListings = {
+    async: true,
+    crossDomain: true,
+    url: "https://mokesellfed-153b.restdb.io/rest/listing",
+    method: "GET",
+    headers: {
+        "content-type": "application/json",
+        "x-apikey": "<your CORS apikey here>",
+        "cache-control": "no-cache",
+    },
+};
+
+function fetchListings(settings) {
+    fetch(settings)
+        .then((res) => {
+            console.log("Successful read.");
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+            createListings(data);
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+}
+
+function createListings(data) {
+    const filteredData = [];
+    for (const element of data) {
+        if (element.name.includes(searchQuery)) {
+            filteredData.push(element);
+        }
+    }
+
+    for (const listing of filteredData) {
+        const newListing = createListingElements(listing);
+        createdListings.push(newListing);
+    }
+
+    createdListings[0].classList.remove("d-none"); //Unhide the first listing created
+}
+
+fetchListings(localListings);
+// #endregion
+
+// #region  CREATE LISTING ELEMENTS
 const listingsContainer = document.querySelector(".listing");
 function createListingElements(listing) {
     const listingName = listing.name;
-    const itemDesc = listing.itemDesc;
-    const qualityDesc = listing.qualityDesc;
-    const deliveryDesc = listing.deliveryDesc;
-    const images = listing.images;
+    const itemDesc = listing.description;
+    const qualityDesc = listing.quality[0].quality;
+    const deliveryDesc = listing.delivery;
+    const imageArray = listing.images.split("\n");
+    const sellerProfilePictureImg = listing.seller[0]["profile-picture"];
+    const sellerUsername = listing.seller[0].username;
 
     //Create listing container.
     const container = document.createElement("div");
@@ -63,32 +110,51 @@ function createListingElements(listing) {
 
     //Create images
     const imageCol = createAppendElement("div", "", row, ["col-5"]);
-    if (images.length == 1) {
-        const img = createAppendElement("img", "", imageCol, ["img-fluid"]);
-        img.src = images[0];
+    if (imageArray.length == 1) {
+        const img = createAppendElement("img", "", imageCol, ["listing-img"]);
+        img.src = imageArray[0];
     } else {
-        const imageCarousel = createImageCarousel(images);
+        const imageCarousel = createImageCarousel(imageArray);
         imageCol.append(imageCarousel);
     }
 
     //Create listing details
-    const textCol = createAppendElement("div", "", row, ["col-7"]);
-    createAppendElement("h2", listingName, textCol, ["fs-1"]);
+    const textCol = createAppendElement("div", "", row, ["col", "ms-1"]);
+
+    //Title
+    createAppendElement("h2", listingName, textCol, ["fs-1", "m-0"]);
+
+    //Category
+    createAppendElement("h4", "Electronics, Mobile Phone", textCol, ["fs-6"]);
+
+    //Description
     createAppendElement("p", itemDesc, textCol);
     createAppendElement("hr", "", textCol);
 
+    //Quality
     createAppendElement("h3", "Quality", textCol, ["fs-4"]);
     createAppendElement("p", qualityDesc, textCol);
     createAppendElement("hr", "", textCol);
 
+    //Delivery
     createAppendElement("h3", "Delivery", textCol, ["fs-4"]);
     createAppendElement("p", deliveryDesc, textCol);
     createAppendElement("hr", "", textCol);
 
-    listingNumber++;
+    //Seller info
+    const sellerContainer = createAppendElement("div", "", textCol, ["seller-container", "row"]);
+    createAppendElement("h3", "Seller", sellerContainer, ["fs-4"]);
+    //PFP
+    const sellerProfilePictureDisplay = createAppendElement("img", "", sellerContainer, ["account-profile-picture"]);
+    sellerProfilePictureDisplay.src = sellerProfilePictureImg;
 
-    createAppendElement("hr", "", container);
-    createAppendElement("p", "", container);
+    const sellerTextContainer = createAppendElement("div", "", sellerContainer, ["col", "mt-2"]);
+    //Username
+    createAppendElement("h3", sellerUsername, sellerTextContainer, ["col-auto", "row"]);
+    //Chat button
+    createAppendElement("button", "Chat with Seller", sellerTextContainer, ["col", "btn", "btn-primary", "row"]);
+
+    listingNumber++;
     return container;
 }
 
@@ -107,7 +173,7 @@ function createImageCarousel(images) {
 
     for (let i = 0; i < images.length; i++) {
         const carouselItem = createAppendElement("div", "", carouselInnerContainer, ["carousel-item"]);
-        const imgElement = createAppendElement("img", "", carouselItem, ["d-block", "w-100"]);
+        const imgElement = createAppendElement("img", "", carouselItem, ["d-block", "listing-img"]);
         imgElement.src = images[i];
 
         i == 0 && carouselItem.classList.add("active");
@@ -124,84 +190,9 @@ function createImageCarousel(images) {
 
     return carouselContainer;
 }
+// #endregion
 
-// ======================
-// FETCHING API DATA
-// ======================
-//API
-const apiKey = "67960fb80acc0626570d3648";
-const listingUrl = "https://mokesellfed-153b.restdb.io/rest/listing";
-
-// Fetch Listings
-//THIS IS WORKING, BUT IT'S COMMENTED OUT TO PREVENT HITTING THE 500 DAILY CALLS RESTDB HAS.
-//LOOK BELOW FOR LOCAL CODE CREATING LISTINGS.
-function callAPIListings() {
-    fetch(listingUrl, {
-        headers: {
-            "x-apikey": apiKey,
-        },
-    })
-        .then((res) => {
-            console.log("API call is successful.");
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data);
-            const filteredData = [];
-            for (const element of data) {
-                console.log(searchQuery);
-                if (element.name.includes(searchQuery)) {
-                    filteredData.push(element);
-                }
-            }
-            return filteredData;
-        })
-        .then((filteredData) => {
-            console.log(`Filtered data for query: "${searchQuery}"`);
-            console.log(filteredData);
-            createListings(filteredData);
-        })
-        .catch((e) => {
-            console.log(e);
-        });
-}
-
-//FETCH LOCAL JSON
-fetch("json/listings.json")
-    .then((res) => {
-        console.log("Local JSON file read successfully.");
-        return res.json();
-    })
-    .then((data) => {
-        console.log(data);
-        const filteredData = [];
-        for (const element of data) {
-            if (element.name.includes(searchQuery)) {
-                filteredData.push(element);
-            }
-        }
-        return filteredData;
-    })
-    .then((filteredData) => {
-        console.log(`Filtered data for query: "${searchQuery}"`);
-        console.log(filteredData);
-        createListings(filteredData);
-    })
-    .catch((error) => {
-        console.error("Error reading JSON file:", error);
-    });
-
-function createListings(filteredData) {
-    for (const listing of filteredData) {
-        const newListing = createListingElements(listing);
-        createdListings.push(newListing);
-    }
-
-    createdListings[0].classList.remove("d-none"); //Unhide the first listing created
-}
-
-// ======================
-// LISTENERS
+// #region  LISTENERS
 // ======================
 window.addEventListener("keydown", (e) => {
     if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListings.length - 1) {
@@ -235,3 +226,4 @@ likeButton.addEventListener("click", () => {
 document.querySelector("#quality-bn").addEventListener("click", (e) => {
     console.log(e.target.value);
 });
+// #endregion
