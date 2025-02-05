@@ -152,12 +152,12 @@ function createListingElements(listing) {
 
     //Create listing container.
     const container = document.createElement("div");
-    container.classList.add("container", "p-0", "d-none");
+    container.classList.add("container", "d-none", "listing-container");
     listingsContainer.append(container);
     const row = createAppendElement("div", "", container, ["row"]);
 
     //Create images
-    const imageCol = createAppendElement("div", "", row, ["col-12", "col-md-5"]);
+    const imageCol = createAppendElement("div", "", row, ["col-12", "col-xl-5"]);
     if (imageArray.length == 1) {
         const img = createAppendElement("img", "", imageCol, ["listing-img"]);
         img.src = imageArray[0];
@@ -170,7 +170,6 @@ function createListingElements(listing) {
     const textCol = createAppendElement("div", "", row, ["col", "ms-1", "listing-text-start"]);
 
     //Title
-    createAppendElement("h2", listingName, textCol, ["fs-1", "m-0"]);
     const title = createAppendElement("h2", listingName, textCol, ["fs-1", "m-0"]);
     createAppendElement("span", likes, title, ["badge", "text-bg-danger", "ms-2"]);
 
@@ -178,7 +177,7 @@ function createListingElements(listing) {
     createAppendElement("h4", "Electronics, Mobile Phone", textCol, ["fs-6"]);
 
     //Price
-    createAppendElement("h3", `$${itemPrice}`, textCol, ["fs-4"]);
+    createAppendElement("h4", `$${itemPrice}`, textCol, ["fs-4"]);
 
     //Description
     createAppendElement("p", itemDesc, textCol);
