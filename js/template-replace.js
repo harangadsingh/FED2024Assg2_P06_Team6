@@ -1,3 +1,5 @@
+let loggedIn = true;
+
 // <div id="replace-with-navbar"></div>;
 
 fetch("html-templates/main-navbar.html")
@@ -7,6 +9,11 @@ fetch("html-templates/main-navbar.html")
         let newelem = document.createElement("div");
         newelem.innerHTML = text;
         oldelem.parentNode.replaceChild(newelem, oldelem);
+
+        loggedIn &&
+            document.querySelectorAll(".require-account").forEach((element) => {
+                element.classList.remove("d-none");
+            });
     });
 
 // <div id="replace-with-checkout"></div>;
