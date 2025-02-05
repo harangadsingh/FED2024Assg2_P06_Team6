@@ -14,6 +14,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 /* //////////////////
 MAIN NAVIGATION BAR
 ////////////////// */
@@ -21,6 +25,11 @@ MAIN NAVIGATION BAR
     color: white;
     font-size: 2rem;
     font-weight: 200;
+}
+
+.navbar-brand:hover {
+    color: white;
+    text-decoration: underline;
 }
 
 .inline-icon {
