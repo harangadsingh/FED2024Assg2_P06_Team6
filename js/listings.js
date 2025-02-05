@@ -5,6 +5,10 @@ let createdListings = [];
 let currentListingIndex = 0;
 let listingNumber = 0;
 let qualityFilter = [];
+const listingCategories = [
+    ["Electronics", "Mobile Phones", "Laptops", "Game Consoles"],
+    ["Apparel", "Jackets", "T-Shirts", "Pants"],
+];
 
 // #region  SEARCH QUERY
 //Get search query from searchbar
@@ -66,21 +70,62 @@ function fetchListings(settings) {
         })
         .then((data) => {
             console.log(data);
-            createListings(data);
+            sortListings(data);
         })
         .catch((e) => {
             console.log(e);
         });
 }
 
-function createListings(data) {
-    const filteredData = [];
+function sortListings(data) {
+    let filteredData = [];
+
+    const dataSortedByQuery = [];
     for (const element of data) {
         if (element.name.includes(searchQuery)) {
-            filteredData.push(element);
+            dataSortedByQuery.push(element);
         }
     }
+    filteredData = dataSortedByQuery;
 
+    if (searchQuery != "Category") {
+        const dataSortedByCategory = [];
+        for (const element of dataSortedByQuery) {
+            //I am too tired to care about this abomination. If it works, it works.
+            switch (searchCategory) {
+                case "Electronics":
+                    if (listingCategories[0].includes(element.category[0]["sub-category"])) dataSortedByCategory.push(element);
+                    break;
+                case "Mobile Phones":
+                    if (element.category[0]["sub-category"] == "Mobile Phones") dataSortedByCategory.push(element);
+                    break;
+                case "Laptops":
+                    if (element.category[0]["sub-category"] == "Laptops") dataSortedByCategory.push(element);
+                    break;
+                case "Game Consoles":
+                    if (element.category[0]["sub-category"] == "Game Consoles") dataSortedByCategory.push(element);
+                    break;
+                case "Apparel":
+                    if (listingCategories[1].includes(element.category[0]["sub-category"])) dataSortedByCategory.push(element);
+                    break;
+                case "Jackets":
+                    if (element.category[0]["sub-category"] == "Jackets") dataSortedByCategory.push(element);
+                    break;
+                case "T-Shirts":
+                    if (element.category[0]["sub-category"] == "T-Shirts") dataSortedByCategory.push(element);
+                    break;
+                case "Pants":
+                    if (element.category[0]["sub-category"] == "Pants") dataSortedByCategory.push(element);
+                    break;
+            }
+        }
+        filteredData = dataSortedByCategory;
+    }
+
+    createListings(filteredData);
+}
+
+function createListings(filteredData) {
     for (const listing of filteredData) {
         const newListing = createListingElements(listing);
         createdListings.push(newListing);
