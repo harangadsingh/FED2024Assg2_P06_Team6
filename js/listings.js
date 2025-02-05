@@ -82,7 +82,7 @@ function sortListings(data) {
 
     const dataSortedByQuery = [];
     for (const element of data) {
-        if (element.name.includes(searchQuery)) {
+        if (element.name.toLowerCase().includes(searchQuery.toLowerCase())) {
             dataSortedByQuery.push(element);
         }
     }
