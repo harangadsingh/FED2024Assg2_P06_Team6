@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Search Results</title>
+
+        <!-- Smooch Sans Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet" />
+
+        <!-- Bootstrap css -->
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+
+        <!-- Main css -->
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <div id="replace-with-navbar"></div>
+        <main class="mb-2">
+            <div class="container-fluid p-0 border-bottom border-top m-0" id="breadcrumb">
+                <p class="m-0 ms-2 fs-5"><a href="/index.html">Home</a> > Listings</p>
+            </div>
+            <div class="container-fluid">
+                <h1 class="search-query-header">
+                    Results for: "<span id="search-query"></span>"
+                    <span class="search-category-span">
+                        in
+                        <span id="search-category"></span>
+                    </span>
+                </h1>
+            </div>
+            <div class="container mt-2">
+                <form action="">
+                    <div class="row">
+                        <div class="col-auto">
+                            <h3 class="m-0 mt-1">Quality</h3>
+                            <div>
+                                <div class="btn-group filters" role="group" aria-label="Basic checkbox toggle button group">
+                                    <input type="checkbox" class="btn-check filter" id="quality-bn" autocomplete="off" value="Brand New" />
+                                    <label class="btn btn-outline-primary" for="quality-bn">Brand New</label>
+                                    <input type="checkbox" class="btn-check filter" id="quality-ln" autocomplete="off" value="Like new" />
+                                    <label class="btn btn-outline-primary" for="quality-ln">Like New</label>
+                                    <input type="checkbox" class="btn-check filter" id="quality-u" autocomplete="off" value="Used" />
+                                    <label class="btn btn-outline-primary" for="quality-u">Used</label>
+                                    <input type="checkbox" class="btn-check filter" id="quality-wu" autocomplete="off" value="Well used" />
+                                    <label class="btn btn-outline-primary" for="quality-wu">Well Used</label>
+                                    <input type="checkbox" class="btn-check filter" id="quality-b" autocomplete="off" value="Broken" />
+                                    <label class="btn btn-outline-primary" for="quality-b">Broken</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <h3 class="m-0 mt-1">Delivery</h3>
+                            <div>
+                                <div class="btn-group filters" role="group" aria-label="Basic checkbox toggle button group">
+                                    <input type="checkbox" class="btn-check filter" id="delivery-s" autocomplete="off" value="shipping" />
+                                    <label class="btn btn-outline-primary" for="delivery-s">Shipping</label>
+                                    <input type="checkbox" class="btn-check filter" id="delivery-m" autocomplete="off" value="meetup" />
+                                    <label class="btn btn-outline-primary" for="delivery-m">Meet-up</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <h3 class="m-0 mt-1 invisible">asd</h3>
+                            <button class="btn btn-secondary" type="submit" id="apply-filters">Apply Filters</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="container-fluid mt-5">
+                <div class="row">
+                    <div class="col-auto listing-control-icon d-flex justify-content-start align-items-center">
+                        <button class="btn" id="trash-listing">
+                            <img src="/images/icons/bootstrap/chevron-compact-left.svg" alt="" />
+                            <img src="/images/icons/bootstrap/trash-fill.svg" alt="Trash the listing" />
+                        </button>
+                    </div>
+                    <div class="col p-0">
+                        <div class="listing"></div>
+                    </div>
+                    <div class="col-auto listing-control-icon d-flex justify-content-end align-items-center">
+                        <button class="btn" id="like-listing">
+                            <img src="/images/icons/bootstrap/heart-fill.svg" alt="Add the listing to your likes" />
+                            <img src="/images/icons/bootstrap/chevron-compact-right.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="replace-with-checkout"></div>
+        <!-- Bootstrap js with Popper -->
+        <script src="/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="/js/template-replace.js"></script>
+        <script src="/js/listings.js"></script>
+    </body>
+</html>
