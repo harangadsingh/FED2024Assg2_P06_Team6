@@ -156,7 +156,7 @@ function createListingElements(listing) {
     const row = createAppendElement("div", "", container, ["row"]);
 
     //Create images
-    const imageCol = createAppendElement("div", "", row, ["col-5"]);
+    const imageCol = createAppendElement("div", "", row, ["col-12", "col-md-5"]);
     if (imageArray.length == 1) {
         const img = createAppendElement("img", "", imageCol, ["listing-img"]);
         img.src = imageArray[0];
