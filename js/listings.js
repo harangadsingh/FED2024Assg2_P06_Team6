@@ -2,6 +2,7 @@
 let searchQuery = "";
 let searchCategory = "";
 let createdListingsElements = [];
+let createdListingsData = [];
 let currentListingIndex = 0;
 let listingNumber = 0;
 let qualityFilter = [];
@@ -121,7 +122,7 @@ function sortListings(data) {
         }
         filteredData = dataSortedByCategory;
     }
-
+    createdListingsData = filteredData;
     createListings(filteredData);
 }
 
