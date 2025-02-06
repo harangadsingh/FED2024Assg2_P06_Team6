@@ -250,6 +250,7 @@ function createImageCarousel(images) {
 window.addEventListener("keydown", (e) => {
     if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListingsElements.length - 1) {
         if (e.code == "ArrowRight") {
+            addListingToLikes(createdListingsData[currentListingIndex]);
             moveToNextListing();
         } else if (e.code == "ArrowLeft") {
             moveToNextListing();
@@ -300,4 +301,16 @@ function moveToNextListing() {
     createdListingsElements[currentListingIndex].classList.remove("d-none");
 }
 
+function addListingToLikes(listing) {
+    if (localStorage.getItem("userAccount") == null) {
+        return;
+    }
+    console.log("Added to likes.");
+
+    const account = JSON.parse(localStorage.getItem("userAccount"));
+    account.likes.push(createdListingsData[currentListingIndex]);
+
+    console.log(account);
+    localStorage.setItem("userAccount", JSON.stringify(account));
+}
 // #endregion
