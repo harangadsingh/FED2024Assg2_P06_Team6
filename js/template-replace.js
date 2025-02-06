@@ -1,5 +1,3 @@
-let loggedIn = true;
-
 // <div id="replace-with-navbar"></div>;
 
 fetch("html-templates/main-navbar.html")
@@ -10,7 +8,7 @@ fetch("html-templates/main-navbar.html")
         newelem.innerHTML = text;
         oldelem.parentNode.replaceChild(newelem, oldelem);
 
-        loggedIn &&
+        localStorage.getItem("loggedIn") == "true" &&
             document.querySelectorAll(".require-account").forEach((element) => {
                 element.classList.remove("d-none");
             });
