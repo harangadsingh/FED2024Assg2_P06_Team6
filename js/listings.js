@@ -66,7 +66,6 @@ const onlineListings = {
 function fetchListings(settings) {
     fetch(settings)
         .then((res) => {
-            console.log("Successful read.");
             return res.json();
         })
         .then((data) => {

@@ -5,7 +5,6 @@ loginUserAccount(emailInput, passwordInput);
 function loginUserAccount(email, password, settings = "/json/accounts.json") {
     fetch(settings)
         .then((res) => {
-            console.log("Successful read.");
             return res.json();
         })
         .then((data) => {
@@ -15,8 +14,7 @@ function loginUserAccount(email, password, settings = "/json/accounts.json") {
                 if (account.email === email && account.password === password) {
                     console.log("Login successful.");
                     localStorage.setItem("userAccount", JSON.stringify(account));
-                    localStorage.setItem("loggedIn", true);
-                    localStorage.setItem("accountIndex", i);
+                    localStorage.setItem("accountIndex", i); //To track the index of the account in the database
                     break;
                 }
             }
