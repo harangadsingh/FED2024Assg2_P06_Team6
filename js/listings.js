@@ -319,5 +319,8 @@ function addListingToLikes(listing) {
     account.likes.push(createdListingsData[currentListingIndex]);
     console.log(account);
     localStorage.setItem("userAccount", JSON.stringify(account));
+
+    createdListingsData[currentListingIndex].likes.push(account);
+    console.log(createdListingsData[currentListingIndex]);
 }
 // #endregion
