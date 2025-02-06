@@ -248,32 +248,27 @@ function createImageCarousel(images) {
 // #region  LISTENERS
 //Listing controls
 window.addEventListener("keydown", (e) => {
-        createdListings[currentListingIndex].classList.add("d-none");
-        currentListingIndex++;
-        createdListings[currentListingIndex].classList.remove("d-none");
-
     if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListingsElements.length - 1) {
         if (e.code == "ArrowRight") {
-            console.log("Added to likes.");
+            moveToNextListing();
         } else if (e.code == "ArrowLeft") {
-            console.log("Trashed.");
+            moveToNextListing();
         }
+
+        moveToNextListing();
     }
 });
 
 //Listing buttons
 const trashButton = document.querySelector("#trash-listing");
 trashButton.addEventListener("click", () => {
-    console.log("Trashed.");
+    moveToNextListing();
 });
 const likeButton = document.querySelector("#like-listing");
 likeButton.addEventListener("click", () => {
-    console.log("Added to likes.");
-
-    if (currentListingIndex < createdListings.length - 1) {
-        createdListings[currentListingIndex].classList.add("d-none");
-        currentListingIndex++;
-        createdListings[currentListingIndex].classList.remove("d-none");
+    addListingToLikes(createdListingsData[currentListingIndex]);
+    if (currentListingIndex < createdListingsElements.length - 1) {
+        moveToNextListing();
     }
 });
 
@@ -298,4 +293,11 @@ for (const option of filterOptions) {
         }
     });
 }
+
+function moveToNextListing() {
+    createdListingsElements[currentListingIndex].classList.add("d-none");
+    currentListingIndex++;
+    createdListingsElements[currentListingIndex].classList.remove("d-none");
+}
+
 // #endregion
