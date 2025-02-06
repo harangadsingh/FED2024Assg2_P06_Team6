@@ -47,11 +47,15 @@ MAIN NAVIGATION BAR
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
-/* The icon looks too tall when beside the other icons */
-#navbar-heart-icon-offset {
-    padding-top: 10px;
-    padding-bottom: 0px;
+.nav-item-mobile {
+    color: white;
+    font-size: 1.25rem;
 }
+
+.nav-item-mobile:first-of-type {
+    margin-top: 10px;
+}
+
 /* //////////////////
 ////////////////// */
 
@@ -73,8 +77,13 @@ DESKTOP CHECKOUT FOOTER
 ////////////////// */
 
 /* //////////////////
-SEARCH PAGE
+LISTING PAGE
 ////////////////// */
+.listing-container {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+}
+
 .listing-img {
     width: 100%;
     height: 500px;
@@ -101,6 +110,16 @@ SEARCH PAGE
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* Make the icons white */
     width: 30px;
     height: 50px;
+}
+
+@media (max-width: 768px) {
+    .listing-text-start {
+        margin-top: 10px;
+    }
+}
+
+.listing-text-start {
+    margin-top: 10px;
 }
 
 /* //////////////////

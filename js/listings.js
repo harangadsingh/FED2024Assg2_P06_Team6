@@ -1,20 +1,19 @@
 //Some variables that need to initialized first
-let searchQuery = "";
-let searchCategory = "";
-let createdListings = [];
-let currentListingIndex = 0;
-let listingNumber = 0;
-let qualityFilter = [];
-const listingCategories = [
-    ["Electronics", "Mobile Phones", "Laptops", "Game Consoles"],
-    ["Apparel", "Jackets", "T-Shirts", "Pants"],
-];
+const onlineSettings = { headers: { "x-apikey": "67960fb80acc0626570d3648" } };
+const urlParams = new URLSearchParams(window.location.search);
+let searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
+let searchCategory = urlParams.get("category") ? urlParams.get("category") : "Category";
+
+let listingNumber = 0; //How many listings have been created, used like i in for loops
+
+let listingQualitys = []; //Listing quality data. Brand new, used, etc.
+let listingCategoryIDs = []; //Listing category IDs.  _id of Electronics, Mobile Phones, etc.
+let createdListingsData = []; //Data of listings fetched from API
+let createdListingsElements = []; //Elements of listings created from data
+let currentListingIndex = 0; //Index of the current listing being displayed
 
 // #region  SEARCH QUERY
 //Get search query from searchbar
-const urlParams = new URLSearchParams(window.location.search);
-searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
-searchCategory = urlParams.get("category") ? urlParams.get("category") : "Category";
 
 //If there is no search query, then hide the "Results for..." header.
 if (searchQuery == "") {
@@ -49,113 +48,120 @@ searchCategorySpan.innerText = searchCategory;
 // #endregion
 
 // #region  FETCHING API
-const localListings = "json/listings.json";
-const onlineListings = {
-    async: true,
-    crossDomain: true,
-    url: "https://mokesellfed-153b.restdb.io/rest/listing",
-    method: "GET",
-    headers: {
-        "content-type": "application/json",
-        "x-apikey": "67960fb80acc0626570d3648",
-        "cache-control": "no-cache",
-    },
-};
-
-function fetchListings(settings) {
-    fetch(settings)
+function fetchAPI(url, purpose, settings = onlineSettings) {
+    return fetch(url, settings)
         .then((res) => {
-            console.log("Successful read.");
+            console.log(`Fetching data for ${purpose} successful.`);
             return res.json();
         })
         .then((data) => {
-            console.log(data);
-            sortListings(data);
+            return data;
         })
         .catch((e) => {
+            console.log(`Fetching data for ${purpose} failed.`);
             console.log(e);
         });
 }
 
-function sortListings(data) {
-    let filteredData = [];
+//Fetch listing quality
+fetchListingQuality();
+async function fetchListingQuality() {
+    listingQualitys = await fetchAPI("https://mokesellfed-153b.restdb.io/rest/listing-quality", "listing quality");
+}
 
-    const dataSortedByQuery = [];
-    for (const element of data) {
-        if (element.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            dataSortedByQuery.push(element);
+//Fetch listings
+fetchListings();
+async function fetchListings() {
+    const apiSearchQuery = searchQuery == "" ? "" : `?q={"listing.name":{"$regex":"${searchQuery}"}}`;
+    const onlineListingsUrl = `https://mokesellfed-153b.restdb.io/rest/listing-to-seller${apiSearchQuery}`;
+    const listingsData = await fetchAPI(onlineListingsUrl, "listings");
+
+    await fetchListingCategories();
+    const categoryFilteredData = filterCategory(listingsData);
+    createdListingsData = categoryFilteredData;
+
+    createListings(categoryFilteredData);
+
+    async function fetchListingCategories() {
+        const categoryQueries = {
+            Category: "",
+            Electronics: `?q={"category.Category":"Electronics"}`,
+            "Mobile Phones": `?q={"sub-category":"Mobile Phones"}`,
+            "Game Consoles": `?q={"sub-category":"Game Consoles"}`,
+            Computers: `?q={"sub-category":"Computers"}`,
+            Apparel: `?q={"category.Category":"Apparel"}`,
+            Jackets: `?q={"sub-category":"Jackets"}`,
+            "T-Shirts": `?q={"sub-category":"T-Shirts"}`,
+            Pants: `?q={"sub-category":"Pants"}`,
+        };
+
+        let categoryQuery = categoryQueries[searchCategory];
+
+        let onlineCategoriesUrl = `https://mokesellfed-153b.restdb.io/rest/listing-sub-category${categoryQuery}`;
+        const categories = await fetchAPI(onlineCategoriesUrl, "listing categories");
+
+        const categoryIDs = [];
+        for (const category of categories) {
+            categoryIDs.push(category._id);
         }
-    }
-    filteredData = dataSortedByQuery;
 
-    if (searchQuery != "Category") {
-        const dataSortedByCategory = [];
-        for (const element of dataSortedByQuery) {
-            //I am too tired to care about this abomination. If it works, it works.
-            switch (searchCategory) {
-                case "Electronics":
-                    if (listingCategories[0].includes(element.category[0]["sub-category"])) dataSortedByCategory.push(element);
-                    break;
-                case "Mobile Phones":
-                    if (element.category[0]["sub-category"] == "Mobile Phones") dataSortedByCategory.push(element);
-                    break;
-                case "Laptops":
-                    if (element.category[0]["sub-category"] == "Laptops") dataSortedByCategory.push(element);
-                    break;
-                case "Game Consoles":
-                    if (element.category[0]["sub-category"] == "Game Consoles") dataSortedByCategory.push(element);
-                    break;
-                case "Apparel":
-                    if (listingCategories[1].includes(element.category[0]["sub-category"])) dataSortedByCategory.push(element);
-                    break;
-                case "Jackets":
-                    if (element.category[0]["sub-category"] == "Jackets") dataSortedByCategory.push(element);
-                    break;
-                case "T-Shirts":
-                    if (element.category[0]["sub-category"] == "T-Shirts") dataSortedByCategory.push(element);
-                    break;
-                case "Pants":
-                    if (element.category[0]["sub-category"] == "Pants") dataSortedByCategory.push(element);
-                    break;
+        listingCategoryIDs = categoryIDs;
+    }
+
+    function filterCategory(data) {
+        const filteredData = [];
+        for (const listingSellerPair of data) {
+            const categoryIDOfListing = listingSellerPair.listing[0].category[0];
+            if (listingCategoryIDs.includes(categoryIDOfListing)) {
+                filteredData.push(listingSellerPair);
             }
         }
-        filteredData = dataSortedByCategory;
+        return filteredData;
     }
 
-    createListings(filteredData);
-}
-
-function createListings(filteredData) {
-    for (const listing of filteredData) {
-        const newListing = createListingElements(listing);
-        createdListings.push(newListing);
+    function fetchLikes(listingID) {
+        const onlineLikesUrl = `https://mokesellfed-153b.restdb.io/rest/listing-to-likes?q={"listing._id":"${listingID}"}`;
+        const likes = fetchAPI(onlineLikesUrl, "likes");
+        return likes;
     }
 
-    createdListings[0].classList.remove("d-none"); //Unhide the first listing created
+    async function createListings(filteredData) {
+        console.log(filteredData);
+        const createdElements = [];
+        for (const listingSellerPair of filteredData) {
+            const newListing = createListingElements(listingSellerPair, likes.length);
+            createdElements.push(newListing);
+        }
+        createdElements[0].classList.remove("d-none"); //Unhide the first listing created
+        createdListingsElements = createdElements;
+    }
 }
-
-fetchListings(localListings);
 // #endregion
 
 // #region  CREATE LISTING ELEMENTS
 const listingsContainer = document.querySelector(".listing");
-function createListingElements(listing) {
+function createListingElements(listingSellerPair, likesCount) {
+    const listing = listingSellerPair.listing[0];
+    const seller = listingSellerPair.seller[0];
+
     const listingName = listing.name;
+    const itemPrice = listing.price;
     const itemDesc = listing.description;
-    const qualityDesc = listing.quality[0].quality;
+    const qualityDesc = listingQualitys.find((quality) => quality._id == listing.quality).quality;
     const deliveryDesc = listing.delivery;
     const imageArray = listing.images.split("\n");
-    const sellerProfilePictureImg = listing.seller[0]["profile-picture"];
-    const sellerUsername = listing.seller[0].username;
+    const sellerProfilePictureImg = seller["profile-picture"];
+    const sellerUsername = seller.username;
+    const likes = likesCount;
 
     //Create listing container.
     const container = document.createElement("div");
-    container.classList.add("container", "p-0", "d-none");
+    container.classList.add("container", "d-none", "listing-container");
     listingsContainer.append(container);
     const row = createAppendElement("div", "", container, ["row"]);
 
     //Create images
-    const imageCol = createAppendElement("div", "", row, ["col-5"]);
+    const imageCol = createAppendElement("div", "", row, ["col-12", "col-xl-5"]);
     if (imageArray.length == 1) {
         const img = createAppendElement("img", "", imageCol, ["listing-img"]);
         img.src = imageArray[0];
@@ -165,13 +171,19 @@ function createListingElements(listing) {
     }
 
     //Create listing details
-    const textCol = createAppendElement("div", "", row, ["col", "ms-1"]);
+    const textCol = createAppendElement("div", "", row, ["col", "ms-1", "listing-text-start"]);
 
     //Title
-    createAppendElement("h2", listingName, textCol, ["fs-1", "m-0"]);
+    const title = createAppendElement("h2", listingName, textCol, ["fs-1", "m-0"]);
+
+    //Likes
+    createAppendElement("span", likes, title, ["badge", "text-bg-danger", "ms-2"]);
 
     //Category
     createAppendElement("h4", "Electronics, Mobile Phone", textCol, ["fs-6"]);
+
+    //Price
+    createAppendElement("h4", `$${itemPrice}`, textCol, ["fs-4"]);
 
     //Description
     createAppendElement("p", itemDesc, textCol);
@@ -241,32 +253,30 @@ function createImageCarousel(images) {
 // #region  LISTENERS
 //Listing controls
 window.addEventListener("keydown", (e) => {
-    if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListings.length - 1) {
-        createdListings[currentListingIndex].classList.add("d-none");
-        currentListingIndex++;
-        createdListings[currentListingIndex].classList.remove("d-none");
-
+    console.log("key pressed");
+    if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListingsElements.length - 1) {
+        console.log("sdfasdas");
         if (e.code == "ArrowRight") {
-            console.log("Added to likes.");
+            addListingToLikes(createdListingsData[currentListingIndex]);
+            moveToNextListing();
         } else if (e.code == "ArrowLeft") {
-            console.log("Trashed.");
+            moveToNextListing();
         }
+
+        moveToNextListing();
     }
 });
 
 //Listing buttons
 const trashButton = document.querySelector("#trash-listing");
 trashButton.addEventListener("click", () => {
-    console.log("Trashed.");
+    moveToNextListing();
 });
 const likeButton = document.querySelector("#like-listing");
 likeButton.addEventListener("click", () => {
-    console.log("Added to likes.");
-
-    if (currentListingIndex < createdListings.length - 1) {
-        createdListings[currentListingIndex].classList.add("d-none");
-        currentListingIndex++;
-        createdListings[currentListingIndex].classList.remove("d-none");
+    addListingToLikes(createdListingsData[currentListingIndex]);
+    if (currentListingIndex < createdListingsElements.length - 1) {
+        moveToNextListing();
     }
 });
 
@@ -290,5 +300,36 @@ for (const option of filterOptions) {
             console.log(qualityFilter);
         }
     });
+}
+
+function moveToNextListing() {
+    createdListingsElements[currentListingIndex].classList.add("d-none");
+    currentListingIndex++;
+    createdListingsElements[currentListingIndex].classList.remove("d-none");
+}
+
+function addListingToLikes(listing) {
+    console.log("liked.");
+    return;
+    if (localStorage.getItem("userAccount") == null) {
+        return;
+    }
+    console.log("Added to likes.");
+
+    const account = JSON.parse(localStorage.getItem("userAccount"));
+
+    for (let likedListing of account.likes) {
+        if (likedListing._id == createdListingsData[currentListingIndex]._id) {
+            alert("You have already liked this listing!");
+            return;
+        }
+    }
+
+    account.likes.push(createdListingsData[currentListingIndex]);
+    console.log(account);
+    localStorage.setItem("userAccount", JSON.stringify(account));
+
+    createdListingsData[currentListingIndex].likes.push(account);
+    console.log(createdListingsData[currentListingIndex]);
 }
 // #endregion
