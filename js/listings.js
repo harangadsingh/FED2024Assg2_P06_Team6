@@ -308,8 +308,15 @@ function addListingToLikes(listing) {
     console.log("Added to likes.");
 
     const account = JSON.parse(localStorage.getItem("userAccount"));
-    account.likes.push(createdListingsData[currentListingIndex]);
 
+    for (let likedListing of account.likes) {
+        if (likedListing._id == createdListingsData[currentListingIndex]._id) {
+            alert("You have already liked this listing!");
+            return;
+        }
+    }
+
+    account.likes.push(createdListingsData[currentListingIndex]);
     console.log(account);
     localStorage.setItem("userAccount", JSON.stringify(account));
 }
