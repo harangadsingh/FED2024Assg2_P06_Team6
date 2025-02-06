@@ -1,7 +1,7 @@
 //Some variables that need to initialized first
 let searchQuery = "";
 let searchCategory = "";
-let createdListings = [];
+let createdListingsElements = [];
 let currentListingIndex = 0;
 let listingNumber = 0;
 let qualityFilter = [];
@@ -128,10 +128,10 @@ function sortListings(data) {
 function createListings(filteredData) {
     for (const listing of filteredData) {
         const newListing = createListingElements(listing);
-        createdListings.push(newListing);
+        createdListingsElements.push(newListing);
     }
 
-    createdListings[0].classList.remove("d-none"); //Unhide the first listing created
+    createdListingsElements[0].classList.remove("d-none"); //Unhide the first listing created
 }
 
 fetchListings(localListings);
@@ -247,11 +247,11 @@ function createImageCarousel(images) {
 // #region  LISTENERS
 //Listing controls
 window.addEventListener("keydown", (e) => {
-    if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListings.length - 1) {
         createdListings[currentListingIndex].classList.add("d-none");
         currentListingIndex++;
         createdListings[currentListingIndex].classList.remove("d-none");
 
+    if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListingsElements.length - 1) {
         if (e.code == "ArrowRight") {
             console.log("Added to likes.");
         } else if (e.code == "ArrowLeft") {
