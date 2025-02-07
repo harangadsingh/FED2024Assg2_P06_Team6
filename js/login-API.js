@@ -1,5 +1,5 @@
 const apiKey = "67960fb80acc0626570d3648";
-const detailsUrl = "https://mokesellfed-153b.restdb.io/rest/accounts?max=2";
+const detailsUrl = "https://mokesellfed-153b.restdb.io/rest/accounts";
 
 async function login() {
     const email = document.getElementById("email").value;
