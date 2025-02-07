@@ -217,7 +217,13 @@ function createListingElements(listingSellerPair, likesCount) {
     //Username
     createAppendElement("h3", sellerUsername, sellerTextContainer, ["col-auto", "row"]);
     //Chat button
-    createAppendElement("button", "Chat with Seller", sellerTextContainer, ["col", "btn", "btn-primary", "row"]);
+    const chatWithSellerForm = createAppendElement("form", "", sellerTextContainer, ["col", "row"]);
+    chatWithSellerForm.action = "/chat-page.html";
+    chatWithSellerForm.method = "GET";
+    createAppendElement("button", "Chat with Seller", chatWithSellerForm, ["btn", "btn-primary", "col-auto"]).type = "submit";
+    const hiddenInput = createAppendElement("input", "", chatWithSellerForm, ["d-none"]);
+    hiddenInput.name = "listingData";
+    hiddenInput.value = JSON.stringify(listingSellerPair);
 
     listingNumber++;
     return container;
