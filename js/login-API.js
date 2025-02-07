@@ -27,6 +27,7 @@ async function login() {
 
         if (user) {
             alert("Login successful!");
+            localStorage.setItem("userAccount", JSON.stringify(user));
             window.location.href = "index.html";
         } else {
             alert("Invalid username/email or password! Try again.");
