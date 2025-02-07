@@ -1,5 +1,3 @@
-//Some variables that need to initialized first
-const apiKey = "67960fb80acc0626570d3648";
 const onlineSettings = { headers: { "x-apikey": apiKey } };
 
 const urlParams = new URLSearchParams(window.location.search);

@@ -1,6 +1,3 @@
-const apiKey = "67960fb80acc0626570d3648";
-const getSettings = { headers: { "x-apikey": apiKey } };
-
 const urlParams = new URLSearchParams(window.location.search);
 const listingData = JSON.parse(urlParams.get("listingData"));
 const listingId = listingData.listing[0]._id;
