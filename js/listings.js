@@ -1,9 +1,3 @@
-const onlineSettings = { headers: { "x-apikey": apiKey } };
-
-const urlParams = new URLSearchParams(window.location.search);
-let searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
-let searchCategory = urlParams.get("category") ? urlParams.get("category") : "Category";
-
 let listingNumber = 0; //How many listings have been created, used like i in for loops
 
 let listingQualitys = []; //Listing quality data. Brand new, used, etc.
@@ -12,41 +6,6 @@ let createdListingsData = []; //Data of listings fetched from API
 let createdListingsElements = []; //Elements of listings created from data
 let currentListingIndex = 0; //Index of the current listing being displayed
 let likesArray = []; //Likes of created listings
-
-// #region  SEARCH QUERY
-//Get search query from searchbar
-
-//If there is no search query, then hide the "Results for..." header.
-if (searchQuery == "") {
-    const searchQueryHeader = document.querySelector(".search-query-header");
-    searchQueryHeader.style.visibility = "hidden";
-}
-
-//If there is no category searched, then hide the "In [category]" span.
-if (searchCategory == "Category") {
-    const searchCategorySpan = document.querySelector(".search-category-span");
-    searchCategorySpan.style.visibility = "hidden";
-}
-
-let searchbarInput = "";
-let searchbarCategory = "";
-
-//Using a very scuffed way to ensure these elements exist before assigning them, because these are created by template-replace.js.
-//God bless Godot's "await get_tree().create_timer(0.1).timeout"
-setTimeout(() => {
-    searchbarInput = document.querySelector("#searchbar-input");
-    searchbarCategory = document.querySelector("#searchbar-category");
-    searchbarInput.value = searchQuery;
-    searchbarCategory.value = searchCategory;
-}, 100);
-
-searchCategory = searchCategory[0].toUpperCase() + searchCategory.slice(1); //Capitalize first letter to be shown in span
-
-const searchQuerySpan = document.querySelector("#search-query");
-searchQuerySpan.innerText = searchQuery;
-const searchCategorySpan = document.querySelector("#search-category");
-searchCategorySpan.innerText = searchCategory;
-// #endregion
 
 //Fetch listing quality
 fetchListingQuality();
