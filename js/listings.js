@@ -48,22 +48,6 @@ const searchCategorySpan = document.querySelector("#search-category");
 searchCategorySpan.innerText = searchCategory;
 // #endregion
 
-// #region  FETCHING API
-function fetchAPI(url, purpose, settings = onlineSettings) {
-    return fetch(url, settings)
-        .then((res) => {
-            console.log(`Fetching data for ${purpose} successful.`);
-            return res.json();
-        })
-        .then((data) => {
-            return data;
-        })
-        .catch((e) => {
-            console.log(`Fetching data for ${purpose} failed.`);
-            console.log(e);
-        });
-}
-
 //Fetch listing quality
 fetchListingQuality();
 async function fetchListingQuality() {
