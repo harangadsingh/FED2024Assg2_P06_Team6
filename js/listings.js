@@ -1,5 +1,4 @@
 //Some variables that need to initialized first
-const onlineSettings = { headers: { "x-apikey": "67960fb80acc0626570d3648" } };
 const urlParams = new URLSearchParams(window.location.search);
 let searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
 let searchCategory = urlParams.get("category") ? urlParams.get("category") : "Category";
@@ -11,6 +10,7 @@ let listingCategoryIDs = []; //Listing category IDs.  _id of Electronics, Mobile
 let createdListingsData = []; //Data of listings fetched from API
 let createdListingsElements = []; //Elements of listings created from data
 let currentListingIndex = 0; //Index of the current listing being displayed
+let likesArray = []; //Likes of created listings
 
 // #region  SEARCH QUERY
 //Get search query from searchbar
@@ -119,17 +119,21 @@ async function fetchListings() {
         return filteredData;
     }
 
-    function fetchLikes(listingID) {
-        const onlineLikesUrl = `https://mokesellfed-153b.restdb.io/rest/listing-to-likes?q={"listing._id":"${listingID}"}`;
-        const likes = fetchAPI(onlineLikesUrl, "likes");
-        return likes;
+    async function fetchLikes(listingIDs) {
+        const onlineLikesUrl = `https://mokesellfed-153b.restdb.io/rest/listing-to-likes?q={"listing._id":{"$in":[${listingIDs
+            .map((id) => `"${id}"`)
+            .join(",")}]}}`;
+        const likes = await fetchAPI(onlineLikesUrl, "likes");
+        likesArray = likes;
     }
 
     async function createListings(filteredData) {
-        console.log(filteredData);
+        const filteredDataListingIDs = filteredData.map((listingSellerPair) => listingSellerPair.listing[0]._id);
+        await fetchLikes(filteredDataListingIDs);
         const createdElements = [];
         for (const listingSellerPair of filteredData) {
-            const newListing = createListingElements(listingSellerPair, likes.length);
+            const likes = likesArray.filter((like) => like.listing[0]._id == listingSellerPair.listing[0]._id).length;
+            const newListing = createListingElements(listingSellerPair, likes);
             createdElements.push(newListing);
         }
         createdElements[0].classList.remove("d-none"); //Unhide the first listing created
@@ -253,11 +257,9 @@ function createImageCarousel(images) {
 // #region  LISTENERS
 //Listing controls
 window.addEventListener("keydown", (e) => {
-    console.log("key pressed");
     if ((e.code == "ArrowRight" || e.code == "ArrowLeft") && currentListingIndex < createdListingsElements.length - 1) {
-        console.log("sdfasdas");
         if (e.code == "ArrowRight") {
-            addListingToLikes(createdListingsData[currentListingIndex]);
+            addListingToLikes(createdListingsData[currentListingIndex].listing[0]);
             moveToNextListing();
         } else if (e.code == "ArrowLeft") {
             moveToNextListing();
@@ -274,7 +276,7 @@ trashButton.addEventListener("click", () => {
 });
 const likeButton = document.querySelector("#like-listing");
 likeButton.addEventListener("click", () => {
-    addListingToLikes(createdListingsData[currentListingIndex]);
+    addListingToLikes(createdListingsData[currentListingIndex].listing[0]);
     if (currentListingIndex < createdListingsElements.length - 1) {
         moveToNextListing();
     }
@@ -308,28 +310,47 @@ function moveToNextListing() {
     createdListingsElements[currentListingIndex].classList.remove("d-none");
 }
 
-function addListingToLikes(listing) {
-    console.log("liked.");
-    return;
+async function addListingToLikes(listingData) {
     if (localStorage.getItem("userAccount") == null) {
+        alert("Please log in to like listings.");
         return;
     }
-    console.log("Added to likes.");
 
-    const account = JSON.parse(localStorage.getItem("userAccount"));
+    let jsondata = { listing: listingData, account: JSON.parse(localStorage.getItem("userAccount")) };
+    let settings = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-apikey": apiKey,
+        },
+        body: JSON.stringify(jsondata), //THE  API IS WRONG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //WHY DOES IT SAY TO USE DATA
+        //BUT ONLY BODY WORKS ASLKDJFLKASDJFLKADSJFLKDASJFLKDASJFKLADSJFLKADSJFKLDASJFLKADSJHF
+    };
 
-    for (let likedListing of account.likes) {
-        if (likedListing._id == createdListingsData[currentListingIndex]._id) {
-            alert("You have already liked this listing!");
-            return;
-        }
-    }
+    const listingID = jsondata.listing._id;
+    const accountID = jsondata.account._id;
 
-    account.likes.push(createdListingsData[currentListingIndex]);
-    console.log(account);
-    localStorage.setItem("userAccount", JSON.stringify(account));
+    await fetchAPI(
+        `https://mokesellfed-153b.restdb.io/rest/listing-to-likes?q={"listing._id":"${listingID}", "account._id":"${accountID}"}`,
+        "like listing"
+    )
+        .then((data) => {
+            if (data.length != 0) {
+                alert("You have already liked this listing.");
+                return;
+            }
 
-    createdListingsData[currentListingIndex].likes.push(account);
-    console.log(createdListingsData[currentListingIndex]);
+            fetch("https://mokesellfed-153b.restdb.io/rest/listing-to-likes", settings)
+                .then((res) => {
+                    console.log("Listing liked successfully.");
+                })
+                .catch((e) => {
+                    console.log("Listing liking failed.");
+                    console.log(e);
+                });
+        })
+        .catch((e) => {
+            console.log(e);
+        });
 }
-// #endregion

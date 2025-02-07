@@ -1,5 +1,5 @@
 const apiKey = "67960fb80acc0626570d3648";
-const detailsUrl = "https://mokesellfed-153b.restdb.io/rest/accounts?max=2";
+const detailsUrl = "https://mokesellfed-153b.restdb.io/rest/accounts";
 
 async function login() {
     const email = document.getElementById("email").value;
@@ -27,6 +27,7 @@ async function login() {
 
         if (user) {
             alert("Login successful!");
+            localStorage.setItem("userAccount", JSON.stringify(user));
             window.location.href = "index.html";
         } else {
             alert("Invalid username/email or password! Try again.");
@@ -39,9 +40,9 @@ async function login() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("loginForm");
-    loginForm.addEventListener("submit", function(event) {
+    loginForm.addEventListener("submit", function (event) {
         event.preventDefault();
         login();
     });
