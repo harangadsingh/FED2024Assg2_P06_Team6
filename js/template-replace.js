@@ -7,6 +7,11 @@ fetch("html-templates/main-navbar.html")
         let newelem = document.createElement("div");
         newelem.innerHTML = text;
         oldelem.parentNode.replaceChild(newelem, oldelem);
+
+        localStorage.getItem("userAccount") != null &&
+            document.querySelectorAll(".require-account").forEach((element) => {
+                element.classList.remove("d-none");
+            });
     });
 
 // <div id="replace-with-checkout"></div>;
