@@ -32,7 +32,8 @@ function signUpFunction() {
             .then((data) => {
                 console.log(data);
                 alert("Account created successfully!");
-                window.location.href = "index.html";
+                localStorage.setItem("userAccount", JSON.stringify(data));
+                window.location.href = "/index.html";
             })
             .catch((e) => {
                 console.error(e);
