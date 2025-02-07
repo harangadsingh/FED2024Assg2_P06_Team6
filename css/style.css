@@ -205,3 +205,28 @@ TRANSACTION PAGE
 .hidden {
     display: none;
 }
+
+/* Chat room */
+.chat-container {
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    height: 70vh;
+}
+
+.chat-input-container {
+    border: 1px solid #e0e0e0;
+    border-top: none;
+}
+.other-chatter p {
+    background-color: black;
+    padding: 10px 5px;
+}
+
+.current-chatter p {
+    background-color: cyan;
+    padding: 10px 5px;
+}
+
+.subject-container {
+    background-color: black;
+}

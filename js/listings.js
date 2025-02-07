@@ -1,4 +1,5 @@
-//Some variables that need to initialized first
+const onlineSettings = { headers: { "x-apikey": apiKey } };
+
 const urlParams = new URLSearchParams(window.location.search);
 let searchQuery = urlParams.get("query") ? urlParams.get("query") : "";
 let searchCategory = urlParams.get("category") ? urlParams.get("category") : "Category";
@@ -46,22 +47,6 @@ searchQuerySpan.innerText = searchQuery;
 const searchCategorySpan = document.querySelector("#search-category");
 searchCategorySpan.innerText = searchCategory;
 // #endregion
-
-// #region  FETCHING API
-function fetchAPI(url, purpose, settings = onlineSettings) {
-    return fetch(url, settings)
-        .then((res) => {
-            console.log(`Fetching data for ${purpose} successful.`);
-            return res.json();
-        })
-        .then((data) => {
-            return data;
-        })
-        .catch((e) => {
-            console.log(`Fetching data for ${purpose} failed.`);
-            console.log(e);
-        });
-}
 
 //Fetch listing quality
 fetchListingQuality();
@@ -214,18 +199,16 @@ function createListingElements(listingSellerPair, likesCount) {
     //Username
     createAppendElement("h3", sellerUsername, sellerTextContainer, ["col-auto", "row"]);
     //Chat button
-    createAppendElement("button", "Chat with Seller", sellerTextContainer, ["col", "btn", "btn-primary", "row"]);
+    const chatWithSellerForm = createAppendElement("form", "", sellerTextContainer, ["col", "row"]);
+    chatWithSellerForm.action = "/chat-page.html";
+    chatWithSellerForm.method = "GET";
+    createAppendElement("button", "Chat with Seller", chatWithSellerForm, ["btn", "btn-primary", "col-auto"]).type = "submit";
+    const hiddenInput = createAppendElement("input", "", chatWithSellerForm, ["d-none"]);
+    hiddenInput.name = "listingData";
+    hiddenInput.value = JSON.stringify(listingSellerPair);
 
     listingNumber++;
     return container;
-}
-
-function createAppendElement(elementType, text, parent = "", classes = "") {
-    const element = document.createElement(elementType);
-    element.innerText = text;
-    classes != "" && element.classList.add(...classes); //If there is a class, add it
-    parent != "" && parent.append(element); //If there is a parent, append the element to it
-    return element;
 }
 
 function createImageCarousel(images) {
