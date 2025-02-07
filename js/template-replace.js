@@ -8,10 +8,14 @@ fetch("html-templates/main-navbar.html")
         newelem.innerHTML = text;
         oldelem.parentNode.replaceChild(newelem, oldelem);
 
-        localStorage.getItem("userAccount") != null &&
+        if (localStorage.getItem("userAccount") != null) {
             document.querySelectorAll(".require-account").forEach((element) => {
                 element.classList.remove("d-none");
             });
+            document.querySelectorAll(".when-not-in-account").forEach((element) => {
+                element.classList.add("d-none");
+            });
+        }
     });
 
 // <div id="replace-with-checkout"></div>;

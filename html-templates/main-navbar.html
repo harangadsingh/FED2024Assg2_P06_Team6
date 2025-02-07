@@ -63,10 +63,11 @@
                             <img src="/images/icons/bootstrap/person-circle.svg" alt="Register/Log in" class="navbar-img" />
                         </button>
                         <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/signup-page.html">Register</a></li>
-                            <li><a class="dropdown-item" href="/login-page.html">Log in</a></li>
+                            <li class="when-not-in-account"><a class="dropdown-item" href="/signup-page.html">Register</a></li>
+                            <li class="when-not-in-account"><a class="dropdown-item" href="/login-page.html">Log in</a></li>
+                            <li class="d-none require-account"><a class="dropdown-item" href="/signup-page.html">Create new account</a></li>
+                            <li class="d-none require-account"><a class="dropdown-item" href="/login-page.html">Change account</a></li>
                             <hr class="d-none require-account" />
-                            <!-- I don't know why, but putting dropdown-item class on these things break them -->
                             <li class="d-none require-account">
                                 <a class="dropdown-item" href="#Notifs">Notifications <span class="badge text-bg-danger">5</span></a>
                             </li>
