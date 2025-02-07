@@ -336,7 +336,6 @@ async function addListingToLikes(listingData) {
         "like listing"
     )
         .then((data) => {
-            console.log("fetched data", data);
             if (data.length != 0) {
                 alert("You have already liked this listing.");
                 return;
