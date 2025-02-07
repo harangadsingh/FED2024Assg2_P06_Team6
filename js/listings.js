@@ -11,6 +11,7 @@ let listingCategoryIDs = []; //Listing category IDs.  _id of Electronics, Mobile
 let createdListingsData = []; //Data of listings fetched from API
 let createdListingsElements = []; //Elements of listings created from data
 let currentListingIndex = 0; //Index of the current listing being displayed
+let likesArray = []; //Likes of created listings
 
 // #region  SEARCH QUERY
 //Get search query from searchbar
@@ -119,17 +120,21 @@ async function fetchListings() {
         return filteredData;
     }
 
-    function fetchLikes(listingID) {
-        const onlineLikesUrl = `https://mokesellfed-153b.restdb.io/rest/listing-to-likes?q={"listing._id":"${listingID}"}`;
-        const likes = fetchAPI(onlineLikesUrl, "likes");
-        return likes;
+    async function fetchLikes(listingIDs) {
+        const onlineLikesUrl = `https://mokesellfed-153b.restdb.io/rest/listing-to-likes?q={"listing._id":{"$in":[${listingIDs
+            .map((id) => `"${id}"`)
+            .join(",")}]}}`;
+        const likes = await fetchAPI(onlineLikesUrl, "likes");
+        likesArray = likes;
     }
 
     async function createListings(filteredData) {
-        console.log(filteredData);
+        const filteredDataListingIDs = filteredData.map((listingSellerPair) => listingSellerPair.listing[0]._id);
+        await fetchLikes(filteredDataListingIDs);
         const createdElements = [];
         for (const listingSellerPair of filteredData) {
-            const newListing = createListingElements(listingSellerPair, likes.length);
+            const likes = likesArray.filter((like) => like.listing[0]._id == listingSellerPair.listing[0]._id).length;
+            const newListing = createListingElements(listingSellerPair, likes);
             createdElements.push(newListing);
         }
         createdElements[0].classList.remove("d-none"); //Unhide the first listing created
