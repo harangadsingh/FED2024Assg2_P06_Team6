@@ -3,7 +3,7 @@ const onlineSettings = { headers: { "x-apikey": apiKey } };
 
 let emailInput = "skywalker23@example.com";
 let passwordInput = "Falcon@2023";
-loginUserAccount(emailInput, passwordInput);
+// loginUserAccount(emailInput, passwordInput);
 
 function loginUserAccount(email, password) {
     localStorage.clear();
