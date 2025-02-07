@@ -2,7 +2,7 @@ const apiKey = "67960fb80acc0626570d3648";
 const listingUrl = "https://mokesellfed-153b.restdb.io/rest/accounts";
 
 function signUpFunction() {
-    const signUpForm = document.querySelector(".signup-form");
+    const signUpForm = document.querySelector("#signupForm");
     signUpForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = new FormData(signUpForm);
