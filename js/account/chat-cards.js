@@ -59,7 +59,8 @@ async function chats() {
                 const title = chat.listing[0].name;
                 const text = chat.buyer[0].username;
                 const chatID = chat._id;
-                const chatCard = createChatCard(imgSrc, title, text, chatID, "seller");
+                const listingData = JSON.stringify(userListingData.find((listing) => listing.listing[0]._id == chat.listing[0]._id));
+                const chatCard = createChatCard(imgSrc, title, text, chatID, "seller", listingData);
                 document.querySelector("#chats-with-customer").innerHTML += chatCard;
             }
         }
@@ -69,14 +70,15 @@ async function chats() {
                 const title = chat["listing-to-seller"].listing[0].name;
                 const text = chat["listing-to-seller"].seller[0].username;
                 const chatID = chat.chat._id;
-                const chatCard = createChatCard(imgSrc, title, text, chatID, "buyer");
+                const listingData = JSON.stringify(chat["listing-to-seller"]);
+                const chatCard = createChatCard(imgSrc, title, text, chatID, "buyer", listingData);
                 document.querySelector("#chats-with-seller").innerHTML += chatCard;
             }
         }
     }
 }
 
-function createChatCard(imgSrc, title, text, chatID, userRole) {
+function createChatCard(imgSrc, title, text, chatID, userRole, listingData) {
     return `
     <div class="col-auto mb-2 mx-1 p-0">
         <div class="card" style="width: 18rem">
@@ -87,6 +89,7 @@ function createChatCard(imgSrc, title, text, chatID, userRole) {
                 <form action="/chat-page.html" method="GET">
                     <input type="hidden" value="${chatID}" name="chatID" />
                     <input type="hidden" value="${userRole}" name="userRole" />
+                    <input type="hidden" value='${listingData}' name="listingData" />
                     <button type="submit" class="btn btn-primary">Chat</a>
                 </form>
             </div>
