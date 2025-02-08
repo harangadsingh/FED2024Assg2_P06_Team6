@@ -18,40 +18,82 @@
     <body>
         <div id="replace-with-navbar"></div>
         <main class="border-top">
-            <div class="account-container text-center" style="background-color: #bababa">
-                <div class="profile-picture-container mb-4">
-                    <img src="images/icons/bootstrap/person-circle.svg" alt="Profile Picture" class="account-profile-picture" id="profile-picture" />
-                    <h3 class="mt-2 username">john_doe</h3>
+            <section>
+                <div class="account-container text-center" style="background-color: #bababa">
+                    <div class="profile-picture-container mb-4">
+                        <img
+                            src="images/icons/bootstrap/person-circle.svg"
+                            alt="Profile Picture"
+                            class="account-profile-picture"
+                            id="profile-picture"
+                        />
+                        <h3 class="mt-2 username">john_doe</h3>
+                    </div>
+                    <h2 class="mb-4">Account Details</h2>
+                    <form id="account-form">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" value="john_doe" disabled />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" value="john@example.com" disabled />
+                        </div>
+                        <hr />
+                        <div class="accordion" id="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button
+                                        class="accordion-button"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne"
+                                        aria-expanded="true"
+                                        aria-controls="collapseOne"
+                                    >
+                                        Change Password
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                                    <div class="accordion-body">
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">New password</label>
+                                            <input type="password" class="form-control" id="password" value="" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Confirm new password</label>
+                                            <input type="password" class="form-control" id="password-confirm" value="" />
+                                            <h3 class="fs-1 text-danger d-none" id="password-warning">Passwords don't match!</h3>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-primary">Change Password</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <h2 class="mb-4">Account Details</h2>
-                <form id="account-form">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" value="john_doe" disabled />
+            </section>
+            <section>
+                <div class="container">
+                    <div class="row" id="chats-with-customer">
+                        <div class="col-12">
+                            <h2>Chat with Customers</h2>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" value="john@example.com" disabled />
+                    <div class="row" id="chats-with-seller">
+                        <div class="col-12">
+                            <h2>Chat with Sellers</h2>
+                        </div>
                     </div>
-                    <hr />
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Change Password</label>
-                        <input type="password" class="form-control" id="password" value="" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Confirm new Password</label>
-                        <input type="password" class="form-control" id="password-confirm" value="" />
-                        <h3 class="fs-1 text-danger d-none" id="password-warning">Passwords don't match!</h3>
-                    </div>
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Change Password</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </section>
         </main>
         <script src="/bootstrap/js/bootstrap.bundle.js"></script>
         <script src="/js/components/template-replace.js"></script>
         <script src="/js/components/fetch-api.js"></script>
         <script src="/js/account/manage-account.js"></script>
+        <script src="js/account/chat-cards.js"></script>
     </body>
 </html>
