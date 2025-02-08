@@ -143,6 +143,7 @@ function createChatMessageElements(chatMsgData) {
     newChatMessage.addEventListener("keydown", (e) => {
         if (e.key == "Enter" && !e.shiftKey) {
             e.preventDefault();
+            messageButton.click();
         }
 
         if (e.key == "Enter" && e.shiftKey) {
