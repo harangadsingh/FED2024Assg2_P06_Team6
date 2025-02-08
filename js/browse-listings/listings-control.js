@@ -153,6 +153,7 @@ function createListingElements(listingSellerPair, likesCount, listingNumber) {
     const sellerTextContainer = createAppendElement("div", "", sellerContainer, ["col", "mt-2"]);
     //Username
     createAppendElement("h3", sellerUsername, sellerTextContainer, ["col-auto", "row"]);
+
     //Chat button
     const chatWithSellerForm = createAppendElement("form", "", sellerTextContainer, ["col", "row"]);
     chatWithSellerForm.action = "/chat-page.html";
@@ -161,6 +162,13 @@ function createListingElements(listingSellerPair, likesCount, listingNumber) {
     const hiddenInput = createAppendElement("input", "", chatWithSellerForm, ["d-none"]);
     hiddenInput.name = "listingData";
     hiddenInput.value = JSON.stringify(listingSellerPair);
+
+    if (localStorage.getItem("userAccountID") == null) {
+        chatWithSellerForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Please log in to chat with sellers.");
+        });
+    }
 
     return container;
 }
