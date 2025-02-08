@@ -16,6 +16,16 @@ if (searchQuery == "") {
     document.querySelector("#search-category").innerText = searchCategory;
 }
 
+let pageTitle = "";
+if (searchQuery != "") {
+    pageTitle = searchQuery;
+} else if (searchCategory != "Category") {
+    pageTitle = searchCategory;
+} else {
+    pageTitle = "Search";
+}
+document.querySelector("title").innerText = `${pageTitle} | MokeSell`;
+
 function waitForElement(selector, callback) {
     const interval = setInterval(() => {
         const element = document.querySelector(selector);
