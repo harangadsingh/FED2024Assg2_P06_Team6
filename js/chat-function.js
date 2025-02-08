@@ -65,41 +65,37 @@ function createChatMessageElements(chatMsgData) {
     for (const message of chatMsgData) {
         if (userRole == "buyer") {
             if (message.originator[0].originator == "seller") {
-                const messageContainer = document.createElement("div");
-                messageContainer.classList.add("row", "other-person-message");
-                chatContainer.appendChild(messageContainer);
-
-                const textContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
-                createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info-subtle"]);
-                createAppendElement("div", "", messageContainer, ["col"]);
+                chatContainer.append(createOtherPersonMessage(message));
             } else {
-                const messageContainer = document.createElement("div");
-                messageContainer.classList.add("row", "this-person-message");
-                chatContainer.appendChild(messageContainer);
-
-                createAppendElement("div", "", messageContainer, ["col"]);
-                const textContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
-                createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info"]);
+                chatContainer.append(createThisPersonMessage(message));
             }
         } else {
             if (message.originator[0].originator == "buyer") {
-                const messageContainer = document.createElement("div");
-                messageContainer.classList.add("row", "other-person-message");
-                chatContainer.appendChild(messageContainer);
-
-                const textContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
-                createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info-subtle"]);
-                createAppendElement("div", "", messageContainer, ["col"]);
+                chatContainer.append(createOtherPersonMessage(message));
             } else {
-                const messageContainer = document.createElement("div");
-                messageContainer.classList.add("row", "this-person-message");
-                chatContainer.appendChild(messageContainer);
-
-                createAppendElement("div", "", messageContainer, ["col"]);
-                const textContainer = creataeAppendElement("div", "", messageContainer, ["col-auto"]);
-                createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info"]);
+                chatContainer.append(createThisPersonMessage(message));
             }
         }
+    }
+
+    function createOtherPersonMessage(message) {
+        const messageContainer = document.createElement("div");
+        messageContainer.classList.add("row", "other-person-message");
+        const textContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
+        createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info-subtle"]);
+        createAppendElement("div", "", messageContainer, ["col"]);
+
+        return messageContainer;
+    }
+
+    function createThisPersonMessage(message) {
+        const messageContainer = document.createElement("div");
+        messageContainer.classList.add("row", "other-person-message");
+        const textContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
+        createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info-subtle"]);
+        createAppendElement("div", "", messageContainer, ["col"]);
+
+        return messageContainer;
     }
 }
 
