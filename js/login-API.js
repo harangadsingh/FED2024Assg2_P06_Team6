@@ -27,7 +27,8 @@ async function login() {
 
         if (user) {
             alert("Login successful!");
-            localStorage.setItem("userAccount", JSON.stringify(user));
+            localStorage.setItem("userAccount", JSON.stringify(user)); //This is legacy code, because I didn't know of RestDB's look up feature. It's still being used in some places until it's replaced.
+            localStorage.setItem("userAccountID", user._id);
             window.location.href = "index.html";
         } else {
             alert("Invalid username/email or password! Try again.");
