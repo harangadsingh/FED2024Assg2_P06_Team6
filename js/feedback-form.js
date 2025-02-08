@@ -2,20 +2,20 @@ const apiKey = "67960fb80acc0626570d3648";
 const listingUrl = "https://mokesellfed-153b.restdb.io/rest/feedback?max=2";
 
 function feedbackFunction() {
-    const signUpForm = document.querySelector("#feedbackForm");
-    signUpForm.addEventListener("submit", (e) => {
+    const feedbackForm = document.querySelector("#feedbackForm");
+    feedbackForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const formData = new FormData(signUpForm);
+        const formData = new FormData(feedbackForm);
         const username = formData.get("username");
         const email = formData.get("email");
         const category = formData.get("category");
-        const feedback = formData.get("feedback");
+        const message = formData.get("message");
         const data = {
             username,
             email,
             password,
             category,
-            feedback,
+            message,
         };
 
         fetch(listingUrl, {
