@@ -236,6 +236,7 @@ TRANSACTION PAGE
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid #e0e0e0;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
