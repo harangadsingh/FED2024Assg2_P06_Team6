@@ -24,10 +24,12 @@ conversation();
 async function conversation() {
     chatMsgData = await fetchConversation();
     console.log("Chat message data: ", chatMsgData);
+    createChatMessageElements(chatMsgData);
 
     async function fetchConversation() {
         if (chatID != null) {
             //If chat ID is provided, fetch conversation using chat ID
+            console.log("Chat id", chatID);
             return fetchAPI(onlineChatMessagesUrl + `?q={"chat-id._id":"${chatID}"}`, "conversation search");
         }
 
@@ -55,6 +57,49 @@ async function conversation() {
         //Create a new conversation
         await fetchAPI(onlineChatUrl, "conversation creation", apiPOSTsettings(chatData));
         return [];
+    }
+}
+
+function createChatMessageElements(chatMsgData) {
+    const chatContainer = document.querySelector(".chat-container");
+    for (const message of chatMsgData) {
+        if (userRole == "buyer") {
+            if (message.originator[0].originator == "seller") {
+                const messageContainer = document.createElement("div");
+                messageContainer.classList.add("row", "other-person-message");
+                chatContainer.appendChild(messageContainer);
+
+                const textContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
+                createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info-subtle"]);
+                createAppendElement("div", "", messageContainer, ["col"]);
+            } else {
+                const messageContainer = document.createElement("div");
+                messageContainer.classList.add("row", "this-person-message");
+                chatContainer.appendChild(messageContainer);
+
+                createAppendElement("div", "", messageContainer, ["col"]);
+                const textContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
+                createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info"]);
+            }
+        } else {
+            if (message.originator[0].originator == "buyer") {
+                const messageContainer = document.createElement("div");
+                messageContainer.classList.add("row", "other-person-message");
+                chatContainer.appendChild(messageContainer);
+
+                const textContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
+                createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info-subtle"]);
+                createAppendElement("div", "", messageContainer, ["col"]);
+            } else {
+                const messageContainer = document.createElement("div");
+                messageContainer.classList.add("row", "this-person-message");
+                chatContainer.appendChild(messageContainer);
+
+                createAppendElement("div", "", messageContainer, ["col"]);
+                const textContainer = creataeAppendElement("div", "", messageContainer, ["col-auto"]);
+                createAppendElement("p", message.message, textContainer, ["m-0", "fs-2", "bg-info"]);
+            }
+        }
     }
 }
 
