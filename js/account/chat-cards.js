@@ -58,7 +58,8 @@ async function chats() {
                 const imgSrc = chat.listing[0].images.split("\n")[0]; //Get first img
                 const title = chat.listing[0].name;
                 const text = chat.buyer[0].username;
-                const chatCard = createChatCard(imgSrc, title, text);
+                const chatID = chat._id;
+                const chatCard = createChatCard(imgSrc, title, text, chatID, "seller");
                 document.querySelector("#chats-with-customer").innerHTML += chatCard;
             }
         }
@@ -67,14 +68,15 @@ async function chats() {
                 const imgSrc = chat["listing-to-seller"].listing[0].images.split("\n")[0]; //Get first img
                 const title = chat["listing-to-seller"].listing[0].name;
                 const text = chat["listing-to-seller"].seller[0].username;
-                const chatCard = createChatCard(imgSrc, title, text);
+                const chatID = chat.chat._id;
+                const chatCard = createChatCard(imgSrc, title, text, chatID, "buyer");
                 document.querySelector("#chats-with-seller").innerHTML += chatCard;
             }
         }
     }
 }
 
-function createChatCard(imgSrc, title, text) {
+function createChatCard(imgSrc, title, text, chatID, userRole) {
     return `
     <div class="col-auto">
         <div class="card" style="width: 18rem">
@@ -82,7 +84,11 @@ function createChatCard(imgSrc, title, text) {
             <div class="card-body">
                 <h5 class="card-title">${title}</h5>
                 <p class="card-text">${text}</p>
-                <a href="#" class="btn btn-primary">Chat</a>
+                <form action="/chat-page.html" method="GET">
+                    <input type="hidden" value="${chatID}" name="chatID" />
+                    <input type="hidden" value="${userRole}" name="userRole" />
+                    <button type="submit" class="btn btn-primary">Chat</a>
+                </form>
             </div>
         </div>
     </div>`;
