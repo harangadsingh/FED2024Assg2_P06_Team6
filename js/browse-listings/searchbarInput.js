@@ -38,12 +38,10 @@ function waitForElement(selector, callback) {
 
 waitForElement("#searchbar-input", (element) => {
     //Wait for the searchbar to load, then set its value to what was searched
-    console.log("Element found!", element);
     element.value = searchQuery;
 });
 
 waitForElement("#searchbar-category", (element) => {
     //Wait for the searchbar to load, then set its value to what was set as the category to search for
-    console.log("Element found!", element);
     element.value = searchCategory;
 });
