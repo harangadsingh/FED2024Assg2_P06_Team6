@@ -54,7 +54,6 @@ async function chats() {
         createChatsWhereUserIsBuyer();
 
         function createChatsWhereUserIsSeller() {
-            console.log(chatDataWhereUserIsSeller);
             for (const chat of chatDataWhereUserIsSeller) {
                 const imgSrc = chat.listing[0].images.split("\n")[0]; //Get first img
                 const title = chat.listing[0].name;
@@ -64,7 +63,6 @@ async function chats() {
             }
         }
         function createChatsWhereUserIsBuyer() {
-            console.log(chatDataWhereUserIsBuyer);
             for (const chat of chatDataWhereUserIsBuyer) {
                 const imgSrc = chat["listing-to-seller"].listing[0].images.split("\n")[0]; //Get first img
                 const title = chat["listing-to-seller"].listing[0].name;
