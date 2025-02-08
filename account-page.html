@@ -33,6 +33,22 @@
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" value="john@example.com" disabled />
                     </div>
+                    <hr />
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Change Password</label>
+                        <input type="password" class="form-control" id="password" value="" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Confirm new Password</label>
+                        <input type="password" class="form-control" id="password-confirm" value="" />
+                        <h3 class="fs-1 text-danger d-none" id="password-warning">Passwords don't match!</h3>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    </div>
+                </form>
+            </div>
+        </main>
         <script src="/bootstrap/js/bootstrap.bundle.js"></script>
         <script src="/js/components/template-replace.js"></script>
         <script src="/js/components/fetch-api.js"></script>
