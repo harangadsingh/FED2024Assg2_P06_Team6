@@ -217,13 +217,14 @@ TRANSACTION PAGE
     border: 1px solid #e0e0e0;
     border-top: none;
 }
-.other-chatter p {
+
+.other-person-message p {
     border-radius: 10px;
     padding: 10px 5px;
     font-size: 1.5rem;
 }
 
-.current-chatter p {
+.this-person-message p {
     border-radius: 10px;
     padding: 10px 5px;
     font-size: 1.5rem;
