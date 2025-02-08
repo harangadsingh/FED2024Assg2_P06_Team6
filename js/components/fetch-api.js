@@ -15,6 +15,15 @@ const apiPOSTsettings = (jsondata) => ({
     body: JSON.stringify(jsondata),
 });
 
+const apiPATCHsettings = (jsondata) => ({
+    method: "PATCH",
+    headers: {
+        "Content-Type": "application/json",
+        "x-apikey": apiKey,
+    },
+    body: JSON.stringify(jsondata),
+});
+
 function fetchAPI(url, purpose, settings = apiGETsettings) {
     return fetch(url, settings)
         .then((res) => {

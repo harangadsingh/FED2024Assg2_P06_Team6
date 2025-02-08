@@ -32,7 +32,8 @@ function signUpFunction() {
             .then((data) => {
                 console.log(data);
                 alert("Account created successfully!");
-                localStorage.setItem("userAccount", JSON.stringify(data));
+                localStorage.setItem("userAccount", JSON.stringify(data)); //This is legacy code, because I didn't know of RestDB's look up feature. It's still being used in some places until it's replaced.
+                localStorage.setItem("userAccountID", user._id);
                 window.location.href = "/index.html";
             })
             .catch((e) => {

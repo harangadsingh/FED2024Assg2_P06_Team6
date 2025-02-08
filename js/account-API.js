@@ -1,29 +1,45 @@
-const apiKey = "67960fb80acc0626570d3648";
-const accountDetails = "https://mokesellfed-153b.restdb.io/rest/accounts?max=2"
+const onlineAccountUrl = "https://mokesellfed-153b.restdb.io/rest/accounts";
+const userAccountID = localStorage.getItem("userAccountID");
+const onlineAccountQuery = `?q={"_id":"${userAccountID}"}`;
 
-async function fetchAccountDetails() {
-    try{
-        const response = await fetch(accountDetails, {
-            method: "GET",
-            headers: {
-                "x-apikey": apiKey,
-            },
-        })
+let accountData = [];
 
-    if (!response.ok) {
-        throw new Error("Failed to fetch account details!");
+accountDetails();
+async function accountDetails() {
+    if (userAccountID === null) {
+        window.location.href = "/login-page.html";
     }
 
-    const accounts = await response.json();
-    const account = accounts[0];
+    accountData = await fetchAPI(onlineAccountUrl + onlineAccountQuery, "account details");
+    document.querySelector("#profile-picture").src = accountData[0]["profile-picture"];
+    document.querySelector(".username").innerText = accountData[0].username;
+    document.querySelector("#username").value = accountData[0].username;
+    document.querySelector("#email").value = accountData[0].email;
 
-    document.getElementById("username").value = account.username;
-    document.getElementById("email").value = account.email;
-    document.getElementById("password").value = account.password;   
-    } catch (error) {
-        console.error("Error: ", error);
-        alert("An error occurred. Please try again.");
+    const passwordInput = document.querySelector("#password");
+    const passwordConfirmInput = document.querySelector("#password-confirm");
+    const passwordWarning = document.querySelector("#password-warning");
+
+    document.querySelector("#account-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (passwordInput.value !== passwordConfirmInput.value) {
+            passwordWarning.classList.remove("d-none");
+            return;
+        }
+
+        passwordWarning.classList.add("d-none");
+        try {
+            updateAccountPassword(passwordInput.value);
+            alert("Password updated successfully! You will have to log in again.");
+            localStorage.clear();
+            window.location.href = "/index.html";
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("An error occurred. Please try again.");
+        }
+    });
+
+    function updateAccountPassword(newPassword) {
+        fetchAPI(onlineAccountUrl + "/" + userAccountID, "account password update", apiPATCHsettings({ password: newPassword }));
     }
 }
-
-document.addEventListener("DOMContentLoaded", fetchAccountDetails);
