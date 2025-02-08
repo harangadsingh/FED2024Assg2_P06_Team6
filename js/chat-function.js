@@ -21,7 +21,11 @@ conversation();
 async function conversation() {
     const onlineChatUrl = "https://mokesellfed-153b.restdb.io/rest/seller-buyer-chat";
     const onlineChatMessagesUrl = "https://mokesellfed-153b.restdb.io/rest/chat-message";
-    chatInfo = await fetchAPI(onlineChatUrl + `?q={"listing._id":"${listingInfo._id}", "buyer._id":"${buyerInfo._id}"}`, "conversation search");
+    if (chatID == null) {
+        chatInfo = await fetchAPI(onlineChatUrl + `?q={"listing._id":"${listingInfo._id}", "buyer._id":"${buyerInfo._id}"}`, "conversation search");
+    } else chatInfo = await fetchAPI(onlineChatUrl + `?q={"_id":"${chatID}"}`, "conversation search");
+
+    console.log("Chat info: ", chatInfo);
 
     if (chatInfo.length == 0) {
         console.log("No conversation found. Creating new conversation.");
