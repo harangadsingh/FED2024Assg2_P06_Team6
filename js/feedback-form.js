@@ -5,17 +5,17 @@ function feedbackFunction() {
     const feedbackForm = document.querySelector("#feedbackForm");
     feedbackForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const formData = new FormData(signUpForm);
+        const formData = new FormData(feedbackForm);
         const username = formData.get("username");
         const email = formData.get("email");
         const category = formData.get("category");
-        const feedback = formData.get("feedback");
+        const message = formData.get("message");
         const data = {
             username,
             email,
             password,
             category,
-            feedback,
+            message,
         };
 
         fetch(listingUrl, {
