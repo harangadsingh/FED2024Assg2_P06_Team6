@@ -60,8 +60,11 @@ async function chats() {
                 const text = chat.buyer[0].username;
                 const chatID = chat._id;
                 const listingData = JSON.stringify(userListingData.find((listing) => listing.listing[0]._id == chat.listing[0]._id));
-                const chatCard = createChatCard(imgSrc, title, text, chatID, "seller", listingData);
-                document.querySelector("#chats-with-customer").innerHTML += chatCard;
+                const buyerData = JSON.stringify(chat.buyer[0]);
+                const chatCard = createChatCard(imgSrc, title, text, chatID, "seller", listingData, buyerData);
+                chatCard.querySelector("input[name='listingData']").value = listingData;
+                chatCard.querySelector("input[name='buyerData']").value = buyerData;
+                document.querySelector("#chats-with-customer").appendChild(chatCard);
             }
         }
         function createChatsWhereUserIsBuyer() {
@@ -71,15 +74,26 @@ async function chats() {
                 const text = chat["listing-to-seller"].seller[0].username;
                 const chatID = chat.chat._id;
                 const listingData = JSON.stringify(chat["listing-to-seller"]);
-                const chatCard = createChatCard(imgSrc, title, text, chatID, "buyer", listingData);
-                document.querySelector("#chats-with-seller").innerHTML += chatCard;
+                let buyerData = JSON.stringify(chat.chat.buyer[0]);
+                const chatCard = createChatCard(imgSrc, title, text, chatID, "buyer", listingData, buyerData);
+
+                //I have to set the values here because js string literals and JSON.stringify() and all this is so weird
+                //WHY DOES SOME LISTINGS PARSE CORRECTLY, BUT OTHERS DONT???? WHYSJAKDDJNKFAADFHJKFDSHJKADJNK
+                //WHY DOES ASSIGNING TO VALUE DIRECTLY WORK, BUT NOT STRING LITERAL?????
+                //WHAT DIFRFERECNEI SH TKHK THERE???????
+                //I HAVE SPOENT 2 HORUJS TROUBLESHOOTING THIS DAMN PROBLEM
+                //but its fixed now :)
+                chatCard.querySelector("input[name='listingData']").value = listingData;
+                chatCard.querySelector("input[name='buyerData']").value = buyerData;
+
+                document.querySelector("#chats-with-seller").appendChild(chatCard);
             }
         }
     }
 }
 
-function createChatCard(imgSrc, title, text, chatID, userRole, listingData) {
-    return `
+function createChatCard(imgSrc, title, text, chatID, userRole, listingData, buyerData) {
+    const cardHTML = `
     <div class="col mb-5 mx-1 p-0">
         <div class="card" style="width: 18rem">
             <img src="${imgSrc}" class="card-img-top card-img" alt="..." />
@@ -90,9 +104,14 @@ function createChatCard(imgSrc, title, text, chatID, userRole, listingData) {
                     <input type="hidden" value="${chatID}" name="chatID" />
                     <input type="hidden" value="${userRole}" name="userRole" />
                     <input type="hidden" value='${listingData}' name="listingData" />
+                    <input type="hidden" value='${buyerData}' name="buyerData" />
                     <button type="submit" class="btn btn-primary">Chat</a>
                 </form>
             </div>
         </div>
     </div>`;
+
+    const template = document.createElement("template");
+    template.innerHTML = cardHTML.trim();
+    return template.content.firstChild;
 }
