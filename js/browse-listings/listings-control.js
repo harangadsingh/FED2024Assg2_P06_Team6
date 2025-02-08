@@ -163,6 +163,10 @@ function createListingElements(listingSellerPair, likesCount, listingNumber) {
     listingDataInput.type = "hidden";
     listingDataInput.name = "listingData";
     listingDataInput.value = JSON.stringify(listingSellerPair);
+    const userRoleInput = createAppendElement("input", "", chatWithSellerForm);
+    userRoleInput.type = "hidden";
+    userRoleInput.name = "userRole";
+    userRoleInput.value = "buyer";
 
     if (localStorage.getItem("userAccountID") == null) {
         chatWithSellerForm.addEventListener("submit", (e) => {
