@@ -52,8 +52,6 @@ async function conversation() {
             listing: listingData.listing[0],
             buyer: buyerData,
         };
-
-        console.log("listingData: ", listingData);
         //Create a new conversation
         await fetchAPI(onlineChatUrl, "conversation creation", apiPOSTsettings(chatData));
         return [];
