@@ -1,5 +1,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const listingData = JSON.parse(urlParams.get("listingData")); //Listing-to-seller collection data
+const userRole = urlParams.get("userRole"); //User role
+const chatID = urlParams.get("chatID"); //Chat ID
+
+console.log("Listing data: ", listingData);
+console.log("User role: ", userRole);
+console.log("Chat ID: ", chatID);
+
 const listingInfo = listingData.listing[0]; //Listing info
 const sellerInfo = listingData.seller[0]; //Seller info
 const buyerInfo = JSON.parse(localStorage.getItem("userAccount")); //Logged in account info
