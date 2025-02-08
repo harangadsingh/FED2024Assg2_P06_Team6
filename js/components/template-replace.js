@@ -16,6 +16,11 @@ fetch("html-templates/main-navbar.html")
                 element.classList.add("d-none");
             });
         }
+        document.querySelector("#logout-button").addEventListener("click", (e) => {
+            e.preventDefault();
+            localStorage.clear();
+            window.location.href = "/index.html";
+        });
     });
 
 // <div id="replace-with-checkout"></div>;
