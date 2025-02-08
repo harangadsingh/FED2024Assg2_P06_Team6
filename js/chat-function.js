@@ -6,7 +6,6 @@ const chatID = urlParams.get("chatID"); //Chat ID
 console.log("Listing data: ", listingData);
 console.log("User role: ", userRole);
 console.log("Chat ID: ", chatID);
-
 const listingInfo = listingData.listing[0]; //Listing info
 const sellerInfo = listingData.seller[0]; //Seller info
 const buyerInfo = JSON.parse(localStorage.getItem("userAccount")); //Logged in account info
@@ -15,7 +14,7 @@ let sellerOriginatorInfo = []; //Seller originator info for when posting message
 let buyerOriginatorInfo = []; //Buyer originator info for when posting messages
 let chatMessageNumber = 0; //Message number to assign to the next message posted
 
-document.querySelector(".seller-name").innerText = sellerInfo.username;
+document.querySelector(".other-person-name").innerText = sellerInfo.username;
 document.querySelector(".conversation-subject").innerText = listingInfo.name;
 
 conversation();
@@ -70,14 +69,14 @@ async function conversation() {
             case "seller":
                 messageContainer = createAppendElement("div", "", chatContainer, ["row", "other-chatter"]);
                 messageTextContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
-                createAppendElement("p", message, messageTextContainer);
+                createAppendElement("p", message, messageTextContainer, ["bg-info"]);
                 createAppendElement("div", "", messageContainer, ["col"]);
                 break;
             case "buyer":
                 messageContainer = createAppendElement("div", "", chatContainer, ["row", "current-chatter"]);
                 createAppendElement("div", "", messageContainer, ["col"]);
                 messageTextContainer = createAppendElement("div", "", messageContainer, ["col-auto"]);
-                createAppendElement("p", message, messageTextContainer);
+                createAppendElement("p", message, messageTextContainer, ["bg-info-subtle"]);
                 break;
         }
     }
