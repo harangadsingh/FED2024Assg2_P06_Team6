@@ -117,8 +117,8 @@ function createChatMessageElements(chatMsgData) {
     }
 
     const messageButton = document.querySelector("#send-message");
+    const newChatMessage = document.querySelector("textarea");
     messageButton.addEventListener("click", (e) => {
-        const newChatMessage = document.querySelector("textarea");
         const message = newChatMessage.value.trim();
         if (message == "") return;
 
@@ -138,5 +138,15 @@ function createChatMessageElements(chatMsgData) {
 
         newChatMessage.value = "";
         messageNumber++;
+    });
+
+    newChatMessage.addEventListener("keydown", (e) => {
+        if (e.key == "Enter" && !e.shiftKey) {
+            e.preventDefault();
+        }
+
+        if (e.key == "Enter" && e.shiftKey) {
+            newChatMessage.value += "\n";
+        }
     });
 }
