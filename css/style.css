@@ -267,3 +267,17 @@ FEEDBACK FORM PAGE
 .form-control, .form-select {
     border-radius: 8px;
 }
+
+/* //////////////////
+FOOTER
+////////////////// */
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
