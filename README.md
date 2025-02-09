@@ -128,3 +128,62 @@ To visualize our design, we have created some wireframes using PenPoint. These f
   </li>
 <ul>
 
+<h2>
+  <strong>Assistive AI</strong>
+</h2>
+
+<ul>
+  <li> Sample Account Details - Asked DeepSeek AI to create sample account details to use in the restDB database.</li>
+<ul>
+
+![AI Pic 0](images/Assisted-AI%20Pictures/photo_2025-02-09_23-39-00.jpg)
+
+<ul>
+  <li> Sample Listings Details- Asked ChatGPT to create sample listings details to use in the restDB database.</li>
+<ul>
+
+![AI Pic 1](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232715.png)
+![AI Pic 2](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232729.png)
+![AI Pic 3](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232740.png)
+![AI Pic 4](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232747.png)
+![AI Pic 5](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232756.png)
+![AI Pic 6](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232804.png)
+![AI Pic 7](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232812.png)
+
+<ul>
+  <li> Slogan for Website - Asked ChatGPT for a sample slogan to add to the website Login 7 SignUp page</li>
+<ul>
+
+![AI Pic 8](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232831.png)
+![AI Pic 9](images/Assisted-AI%20Pictures/Screenshot%202025-02-09%20232839.png)
+
+<h2>
+  <strong>Testing</strong>
+</h2>
+
+<ol>
+  <li> When using string literals, the value attribute of an element can be parsed wrongly if the input contains quotes, like in JSON data. This was fixed by using document.createElement("input") and assigning the string to value directly instead. </li>
+
+  <li> Register/Log into account:
+All the fields are set to required, and the input field for email's type is set to email. 
+If the user tries logging into an account that doesn't exist, an alert shows up. </li>
+
+  <li> Browse Listings page:
+If the user is not logged in, trying to like a listing or open a chat with the seller will alert the user, prompting them to log in before they can continue. </li>
+
+  <li> For the responsive thing:
+Website responsiveness is done mostly through the use of bootstrap.
+The top navbar's contents collapse into a burger on smaller screens.
+Page elements make use of bootstrap's grid system, where reaching certain screen widths will cause the elements to change in size.
+It is mostly automated by that, though certain elements like images that may get squished on smaller screens will be pushed to their own column for more space. </li>
+
+<h2>
+  <strong> Credits </strong>
+</h2>
+
+<ul>
+  <li>OpenAI. (2025). ChatGPT (Feb 9 version) [Large language model]. https://openai.com</li>
+  <li>Unsplash. (n.d.). Unsplash: Free high-resolution photos. Retrieved February 9, 2025, from https://unsplash.com.</li>
+  <li>Bootstrap. (n.d.). Bootstrap - The most popular HTML, CSS, and JS library in the world. Retrieved February 9, 2025, from https://getbootstrap.com.</li>
+  <li> https://docs.google.com/document/d/1iVM8NuDmLBJrwkhwKbH6ZBhLsWKgwSzlm4KiMvTljrE/edit?usp=sharing : Citations for Links to Pictures Used </li>
+</ul>
