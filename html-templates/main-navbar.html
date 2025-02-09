@@ -77,11 +77,18 @@
                             </li>
                         </ul>
                     </li>
-                    <a href="" class="nav-item d-sm-none nav-item-mobile">Register Account</a>
-                    <a href="" class="nav-item d-sm-none nav-item-mobile">Log in</a>
+                    <a href="" class="nav-item d-sm-none nav-item-mobile when-not-in-account">Register Account</a>
+                    <a href="" class="nav-item d-sm-none nav-item-mobile when-not-in-account">Log in</a>
+                    <a class="nav-item d-sm-none nav-item-mobile require-account d-none" id="logout-button" href="/index.html">Log out</a>
                     <hr />
-                    <a href="" class="nav-item d-sm-none nav-item-mobile">Notifications <span class="badge text-bg-danger">5</span></a>
-                    <a href="" class="nav-item d-sm-none nav-item-mobile">Likes <span class="badge text-bg-success">5</span></a>
+                    <a class="nav-item d-sm-none nav-item-mobile require-account d-none" href="/account-page.html">Manage Account</a>
+                    <a class="nav-item d-sm-none nav-item-mobile require-account d-none" href="/manage-listings-page.html">Manage Listings</a>
+                    <a href="" class="nav-item d-sm-none nav-item-mobile require-account d-none"
+                        >Notifications <span class="badge text-bg-danger">5</span></a
+                    >
+                    <a href="" class="nav-item d-sm-none nav-item-mobile require-account d-none"
+                        >Likes <span class="badge text-bg-success">5</span></a
+                    >
                 </ul>
             </div>
         </div>
