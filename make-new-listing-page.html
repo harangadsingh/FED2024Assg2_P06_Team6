@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Make new listing | MokeSell</title>
+
+        <!-- Smooch Sans Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet" />
+
+        <!-- Bootstrap css -->
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+
+        <!-- Main css -->
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <div id="replace-with-navbar"></div>
+        <main class="border-top">
+            <div class="container">
+                <div class="row justify-content-center align-items-center create-listing-container">
+                    <div class="col-6 border">
+                        <form id="make-new-listing-form">
+                            <div class="mb-3">
+                                <label for="listing-name" class="form-label">Listing name:</label>
+                                <input type="text" class="form-control" id="listing-name" required name="listing-name" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="listing-description" class="form-label">Listing description:</label>
+                                <textarea class="form-control" id="listing-description" required name="listing-description"></textarea>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="col-6">
+                                    <select class="form-select" required name="listing-category" id="listing-category">
+                                        <option value="" selected>Select item category</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <select class="form-select" required name="listing-quality" id="listing-quality">
+                                        <option value="" selected>Select item quality</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="listing-price" class="form-label">Listing price:</label>
+                                <input class="form-control" type="number" id="listing-price" min="1" step="any" required name="listing-price" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="listing-delivery" class="form-label">Listing delivery Info:</label>
+                                <textarea class="form-control" id="listing-delivery" required name="listing-delivery"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="listing-images" class="form-label">Listing images:</label>
+                                <textarea class="form-control" id="listing-images" required name="listing-images"></textarea>
+                                <div class="form-text">Only image URLs are accepted at this time.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Bootstrap js with Popper -->
+        <script src="/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="/js/components/template-replace.js"></script>
+        <script src="/js/components/fetch-api.js"></script>
+        <script src="/js/components/createElement.js"></script>
+        <script src="/js/make-new-listing.js"></script>
+    </body>
+</html>
