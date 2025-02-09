@@ -257,7 +257,45 @@ FEEDBACK FORM PAGE
     max-width: 500px;
     margin: auto;
 }
+
+.feedback-card {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: #6c5ce7;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #5a4bce;
+}
+
 #feedback-message {
-    text-align: center;
     font-weight: bold;
+    color: #28a745;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+}
+
+/* //////////////////
+FOOTER
+////////////////// */
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
 }
