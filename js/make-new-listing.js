@@ -47,7 +47,7 @@ form.addEventListener("submit", async (e) => {
     const listingDelivery = document.querySelector("#listing-delivery").value;
     const listingImage = document.querySelector("#listing-images").value;
 
-    let jsondata = {
+    let listingData = {
         name: listingName,
         price: listingPrice,
         category: JSON.parse(listingCategory),
@@ -57,8 +57,23 @@ form.addEventListener("submit", async (e) => {
         images: listingImage,
     };
 
-    console.log(jsondata);
-
     const onlineListingsUrl = "https://mokesellfed-153b.restdb.io/rest/listing";
-    await fetchAPI(onlineListingsUrl, "listing", apiPOSTsettings(jsondata));
+    let createdListingData = await fetchAPI(onlineListingsUrl, "listing", apiPOSTsettings(listingData));
+
+    const userAccountID = localStorage.getItem("userAccountID");
+
+    listingToSellerdata = {
+        listing: {
+            _id: createdListingData._id,
+        },
+        seller: {
+            _id: userAccountID,
+        },
+    };
+
+    const onlineListingToSellerUrl = "https://mokesellfed-153b.restdb.io/rest/listing-to-seller";
+    await fetchAPI(onlineListingToSellerUrl, "listing to seller", apiPOSTsettings(listingToSellerdata));
+
+    alert("Listing created successfully!");
+    window.location.href = "/make-new-listing-page.html";
 });
