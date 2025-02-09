@@ -82,11 +82,11 @@ To visualize our design, we have created some wireframes using PenPoint. These f
 
   <li> 
   <strong>Following Sellers</strong> – Enables buyers to follow their favourite sellers, fostering a more engaging marketplace.
-  <li>
+  </li>
 
   <li>
   <strong>Item Listing Management</strong> – Sellers can list items under different categories, with an option to sort by price. Listings automatically expire after 30 days to maintain marketplace relevance.
-  <li>
+  </li>
 
   <li>
   <strong>Search & Browsing</strong> – Buyers can search for specific items using keywords, while the MokeSwipe feature allows for an intuitive, engaging browsing experience within the same category.
