@@ -78,7 +78,7 @@ function createListingCard(imgSrc, title, id) {
             <div class="card-body">
                 <h5 class="card-title">${title}</h5>   
                 <input type="hidden" value="${id}" name="listingID" />
-                <button class="btn btn-primary">Delete listing</a>    
+                <button class="btn btn-danger">Delete listing</a>    
             </div>
         </div>
         </form>
