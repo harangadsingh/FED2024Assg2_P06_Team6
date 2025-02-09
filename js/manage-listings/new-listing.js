@@ -75,5 +75,5 @@ form.addEventListener("submit", async (e) => {
     await fetchAPI(onlineListingToSellerUrl, "listing to seller", apiPOSTsettings(listingToSellerdata));
 
     alert("Listing created successfully!");
-    window.location.href = "/make-new-listing-page.html";
+    window.location.href = "/manage-listings-page.html";
 });
