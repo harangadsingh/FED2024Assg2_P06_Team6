@@ -159,9 +159,18 @@ function createListingElements(listingSellerPair, likesCount, listingNumber) {
     chatWithSellerForm.action = "/chat-page.html";
     chatWithSellerForm.method = "GET";
     createAppendElement("button", "Chat with Seller", chatWithSellerForm, ["btn", "btn-primary", "col-auto"]).type = "submit";
-    const hiddenInput = createAppendElement("input", "", chatWithSellerForm, ["d-none"]);
-    hiddenInput.name = "listingData";
-    hiddenInput.value = JSON.stringify(listingSellerPair);
+    const listingDataInput = createAppendElement("input", "", chatWithSellerForm);
+    listingDataInput.type = "hidden";
+    listingDataInput.name = "listingData";
+    listingDataInput.value = JSON.stringify(listingSellerPair);
+    const buyerData = createAppendElement("input", "", chatWithSellerForm);
+    buyerData.type = "hidden";
+    buyerData.name = "buyerData";
+    buyerData.value = JSON.stringify(JSON.parse(localStorage.getItem("userAccount")));
+    const userRoleInput = createAppendElement("input", "", chatWithSellerForm);
+    userRoleInput.type = "hidden";
+    userRoleInput.name = "userRole";
+    userRoleInput.value = "buyer";
 
     if (localStorage.getItem("userAccountID") == null) {
         chatWithSellerForm.addEventListener("submit", (e) => {
