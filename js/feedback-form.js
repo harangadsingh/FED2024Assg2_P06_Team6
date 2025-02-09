@@ -1,47 +1,39 @@
 const apiKey = "67960fb80acc0626570d3648";
-const listingUrl = "https://mokesellfed-153b.restdb.io/rest/feedback?max=2";
+const feedbackUrl = "https://mokesellfed-153b.restdb.io/rest/feedback?max=2";
 
-function feedbackFunction() {
-    const feedbackForm = document.querySelector("#feedbackForm");
-    feedbackForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = new FormData(feedbackForm);
-        const username = formData.get("username");
-        const email = formData.get("email");
-        const category = formData.get("category");
-        const message = formData.get("message");
-        const data = {
-            username,
-            email,
-            password,
-            category,
-            message,
-        };
+document.getElementById('feedback-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-        fetch(listingUrl, {
-            method: "POST",
+    const feedbackForm = {
+        username: document.getElementById('username').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        category: document.getElementById('category').value,
+        message: document.getElementById('message').value.trim()
+    };
+
+    try {
+        const response = await fetch(feedbackUrl, {
+            method : "POST",
             headers: {
                 "Content-Type": "application/json",
                 "x-apikey": apiKey,
             },
-            body: JSON.stringify(data),
-        })
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error("Failed to submit feedback");
-                }
-                return res.json();
-            })
-            .then((data) => {
-                console.log(data);
-                alert("Feedback submitted successfully!");
-                window.location.href = "/index.html";
-            })
-            .catch((e) => {
-                console.error(e);
-                alert("An error occurred. Please try again.");
-            });
-    });
-}
+            body: JSON.stringify(feedbackForm),
+        });
 
-document.addEventListener("DOMContentLoaded", feedbackFunction);
+        if (response.ok) {
+            document.getElementById("feedback-message").textContent = "Feedback submitted successfully!";
+            document.getElementById("feedback-form").reset();
+        }
+
+        else {
+            document.getElementById("feedback-message").textContent = "Failed to submit feedback!";
+        }
+    
+    } catch (error) {
+        console.error("Error: ", error);
+        document.getElementById("feedback-message").textContent = "An error occurred. Please try again.";
+    }
+});
+
+
