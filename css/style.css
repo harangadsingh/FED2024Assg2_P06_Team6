@@ -234,7 +234,6 @@ TRANSACTION PAGE
     background-color: black;
 }
 
-
 /* Account page */
 .card-img {
     width: 100%;
@@ -298,4 +297,16 @@ footer {
     color: white;
     text-align: center;
     padding: 15px 0;
+}
+
+/* //////////////////
+//create-listing-page
+////////////////// */
+.create-listing-container {
+    width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

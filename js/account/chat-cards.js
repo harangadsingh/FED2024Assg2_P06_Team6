@@ -94,7 +94,7 @@ async function chats() {
 
 function createChatCard(imgSrc, title, text, chatID, userRole, listingData, buyerData) {
     const cardHTML = `
-    <div class="col mb-5 mx-1 p-0">
+    <div class="col-auto mb-5 mx-1 p-0">
         <div class="card" style="width: 18rem">
             <img src="${imgSrc}" class="card-img-top card-img" alt="..." />
             <div class="card-body">
