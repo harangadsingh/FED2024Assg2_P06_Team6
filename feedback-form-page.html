@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign Up | MokeSell</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    </head>
+
+    <body>
+        <form id = "feedback-form" class = "container mt-4">
+            <label for = "username">Username:</label>
+            <input type = "text" id = "username" class = "form-control" required />
+
+            <label for = "email">Email:</label>
+            <input type = "email" id = "email" class = "form-control" required />
+
+            <label for = "category">Category:</label>
+            <select id="category" class="form-control" required>
+                <option value = "Technical Problem">Technical Problem</option>
+                <option value = "Complaint Against Seller">Complaint Against Seller</option>
+                <option value = "Payment Issue">Payment Issue</option>
+                <option value = "Account & Login Issue">Account & Login Issue</option>
+                <option value = "Product Listing Issues">Product Listing Issues</option>
+                <option value = "Feature Requests & Suggestions">Feature Requests & Suggestions</option>
+                <option value = "General Inquiry">General Inquiry</option>
+                <option value = "Report a Scam or Fraud">Report a Scam or Fraud</option>
+                <option value = "Others">Others</option>
+            </select>
+
+            <label for = "message">Message:</label>
+            <textarea id = "message" class = "form-control" rows = "4" required></textarea>
+
+            <button type = "submit" class = "btn btn-primary mt-3">Submit</button>
+        </form>
+    </body>
+    <div id = "feedback-message" class = "mt-3"></div>
+    <script src="js/feedback-form.js"></script>
+</html>
